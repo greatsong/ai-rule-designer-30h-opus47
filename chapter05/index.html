@@ -1,0 +1,1009 @@
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>물리 시뮬레이션 — 이제 수치로 검증한다 (차시 5-6) | AI 시대의 규칙 설계자 — 30시간 교육과정</title><link rel="canonical" href="https://greatsong.github.io/ai-rule-designer-30h-opus47/chapter05/"/><link rel="sitemap" href="/ai-rule-designer-30h-opus47/sitemap-index.xml"/><script type="module" src="/ai-rule-designer-30h-opus47/mermaid-init.js"></script><script type="module" src="/ai-rule-designer-30h-opus47/toc-toggle.js"></script><link rel="shortcut icon" href="/ai-rule-designer-30h-opus47/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.1"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="물리 시뮬레이션 — 이제 수치로 검증한다 (차시 5-6)"/><meta property="og:type" content="article"/><meta property="og:url" content="https://greatsong.github.io/ai-rule-designer-30h-opus47/chapter05/"/><meta property="og:locale" content="ko"/><meta property="og:description"/><meta property="og:site_name" content="AI 시대의 규칙 설계자 — 30시간 교육과정"/><meta name="twitter:card" content="summary_large_image"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/ai-rule-designer-30h-opus47/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/ai-rule-designer-30h-opus47/_astro/index.DmFJ7yxb.css"><script type="module" src="/ai-rule-designer-30h-opus47/_astro/page.B1D-nYk3.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">콘텐츠로 이동</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/ai-rule-designer-30h-opus47/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> AI 시대의 규칙 설계자 — 30시간 교육과정 </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;검색&#34;}"> <button data-open-modal disabled aria-label="검색" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">검색</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="검색" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> 취소 </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/ai-rule-designer-30h-opus47/_astro/Search.astro_astro_type_script_index_0_lang.CyBO43Vx.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="메인"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="메뉴" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="0vleex6" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 0. 교사 안내</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter00/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">선생님을 위한 안내 — 이 교육과정을 시작하기 전에</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 1. 도입부 — 나만의 봇 만들기</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter01/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI에게 일을 잘 시키려면 — 환경 세팅부터 첫 규칙까지 (차시 1-2)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter02/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">서로의 규칙을 통해 배우기 — 교차 테스트와 갤러리 워크 (차시 3-4)</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 2. 트랙 A — VPython 3D 창작과 시뮬레이션</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter03/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3D 조형 — 내 머릿속 그림을 명세로 바꾸기 (차시 1-2)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter04/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">애니메이션 — 움직임까지 명세하기 (차시 3-4)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter05/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">물리 시뮬레이션 — 이제 수치로 검증한다 (차시 5-6)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter06/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">자유 프로젝트 + 트랙 A 규칙 정리 (차시 7-8)</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/ai-rule-designer-30h-opus47/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/ai-rule-designer-30h-opus47/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-장에서-배우는-것" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎯 이 장에서 배우는 것</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-왜-이걸-배우나요" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💡 왜 이걸 배우나요?</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#선생님께-드리는-편지" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">선생님께 드리는 편지</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📚 핵심 개념</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-물리-공식--검증-도구" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1: 물리 공식 = 검증 도구</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-오차-허용-범위--얼마나-달라도-괜찮은가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2: 오차 허용 범위 — “얼마나 달라도 괜찮은가”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-3-dt--시간을-얼마나-잘게-쪼갤-것인가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 3: dt — “시간을 얼마나 잘게 쪼갤 것인가”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-4-단위-통일--ms인가-kmh인가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 4: 단위 통일 — “m/s인가 km/h인가”</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-차시별-따라하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔨 차시별 따라하기</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#차시-5-50분-물리-공식--검증-도구" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">차시 5 (50분): 물리 공식 = 검증 도구</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#차시-6-50분-수치-기반-수용-기준" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">차시 6 (50분): 수치 기반 수용 기준</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-자주-하는-실수" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">⚠️ 자주 하는 실수</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-1-학생에게-공식-유도를-시킨다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 1: 학생에게 공식 유도를 시킨다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-2-수용-기준을-결과-본-후에-세운다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 2: 수용 기준을 결과 본 후에 세운다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-3-수치-기준을-모호하게-쓴다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 3: 수치 기준을 모호하게 쓴다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-4-ai-코드-디버깅을-선생님이-대신-해준다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 4: AI 코드 디버깅을 선생님이 대신 해준다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-5-5-이내면-어쨌든-합격에-안주한다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 5: “5% 이내면 어쨌든 합격”에 안주한다</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-스스로-점검하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✅ 스스로 점검하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-더-해보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🚀 더 해보기</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#활동-1-오차-줄이기-챌린지-10-15분-차시-6-여유-시-추가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">활동 1: 오차 줄이기 챌린지 (10-15분, 차시 6 여유 시 추가)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#활동-2-공기-저항-추가하기-심화-학생용" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">활동 2: 공기 저항 추가하기 (심화 학생용)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#활동-3-단진자의-소각도-근사-깨보기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">활동 3: 단진자의 소각도 근사 깨보기</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📝 확인 문제</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-다음-장으로" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔗 다음 장으로</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-장에서-배우는-것" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎯 이 장에서 배우는 것</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-왜-이걸-배우나요" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💡 왜 이걸 배우나요?</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#선생님께-드리는-편지" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">선생님께 드리는 편지</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📚 핵심 개념</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-물리-공식--검증-도구" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1: 물리 공식 = 검증 도구</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-오차-허용-범위--얼마나-달라도-괜찮은가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2: 오차 허용 범위 — “얼마나 달라도 괜찮은가”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-3-dt--시간을-얼마나-잘게-쪼갤-것인가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 3: dt — “시간을 얼마나 잘게 쪼갤 것인가”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-4-단위-통일--ms인가-kmh인가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 4: 단위 통일 — “m/s인가 km/h인가”</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-차시별-따라하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔨 차시별 따라하기</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#차시-5-50분-물리-공식--검증-도구" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">차시 5 (50분): 물리 공식 = 검증 도구</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#차시-6-50분-수치-기반-수용-기준" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">차시 6 (50분): 수치 기반 수용 기준</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-자주-하는-실수" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">⚠️ 자주 하는 실수</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-1-학생에게-공식-유도를-시킨다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 1: 학생에게 공식 유도를 시킨다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-2-수용-기준을-결과-본-후에-세운다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 2: 수용 기준을 결과 본 후에 세운다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-3-수치-기준을-모호하게-쓴다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 3: 수치 기준을 모호하게 쓴다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-4-ai-코드-디버깅을-선생님이-대신-해준다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 4: AI 코드 디버깅을 선생님이 대신 해준다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-5-5-이내면-어쨌든-합격에-안주한다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 5: “5% 이내면 어쨌든 합격”에 안주한다</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-스스로-점검하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✅ 스스로 점검하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-더-해보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🚀 더 해보기</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#활동-1-오차-줄이기-챌린지-10-15분-차시-6-여유-시-추가" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">활동 1: 오차 줄이기 챌린지 (10-15분, 차시 6 여유 시 추가)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#활동-2-공기-저항-추가하기-심화-학생용" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">활동 2: 공기 저항 추가하기 (심화 학생용)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#활동-3-단진자의-소각도-근사-깨보기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">활동 3: 단진자의 소각도 근사 깨보기</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📝 확인 문제</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-다음-장으로" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔗 다음 장으로</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">물리 시뮬레이션 — 이제 수치로 검증한다 (차시 5-6)</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="sl-heading-wrapper level-h2"><h2 id="-이-장에서-배우는-것">🎯 이 장에서 배우는 것</h2><a class="sl-anchor-link" href="#-이-장에서-배우는-것"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🎯 이 장에서 배우는 것”</span></a></div>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 교사가 제공한 물리 공식을 ‘검증 도구’로 활용하여 AI 시뮬레이션의 수치적 정확성을 판정할 수 있다</li>
+<li class="task-list-item"><input type="checkbox" disabled> 이론값과 시뮬레이션 결과를 대조하여 ‘오차 허용 범위’를 포함한 수치 기반 수용 기준을 세울 수 있다</li>
+<li class="task-list-item"><input type="checkbox" disabled> 검증이 ‘눈’에서 ‘수식’으로 올라가는 경험을 통해 규칙 파일에 ‘이론값 대조’, ‘dt 명시’, ‘단위 통일’ 같은 수치 검증 규칙을 추가할 수 있다</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-왜-이걸-배우나요">💡 왜 이걸 배우나요?</h2><a class="sl-anchor-link" href="#-왜-이걸-배우나요"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “💡 왜 이걸 배우나요?”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="선생님께-드리는-편지">선생님께 드리는 편지</h3><a class="sl-anchor-link" href="#선생님께-드리는-편지"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님께 드리는 편지”</span></a></div>
+<p>차시 3-4에서 학생들은 “캐릭터가 걸어가는데 발이 땅을 뚫어요”, “회전축이 이상해요” 같은 <strong>눈으로 보는 검증</strong>을 경험했습니다. 이것만으로도 AI를 검증하는 강력한 무기가 되었죠.</p>
+<p>그런데 여기엔 한계가 있습니다. <strong>“보기에 괜찮아 보이면 합격”</strong>이라는 기준은, 물리 시뮬레이션 앞에서 무너집니다.</p>
+<p>예를 들어 학생이 AI에게 “공을 30도 각도로 10m/s로 던져줘”라고 시켰다고 해봅시다. 화면엔 공이 포물선을 그리며 날아갑니다. 보기엔 멀쩡해요. 그런데 이 시뮬레이션이 <strong>물리 법칙을 제대로 따르고 있는가?</strong> 최고점이 진짜 공식대로 계산한 값과 같은가? 이건 눈으로 판정할 수 없습니다.</p>
+<p>이 차시의 핵심은 이것입니다:</p>
+<blockquote>
+<p><strong>“검증의 기준이 ‘눈’에서 ‘수식’으로 올라간다.”</strong></p>
+</blockquote>
+<p>물리 공식은 교사가 제공합니다. 학생이 공식을 외우거나 유도할 필요는 없어요. 학생이 할 일은 <strong>공식을 ‘검증 도구’로 사용</strong>하는 것입니다. 이론값을 먼저 계산해두고, AI가 만든 시뮬레이션의 결과값과 비교하는 거죠. “오차 ±5% 이내면 합격, 그 이상이면 불합격”이라는 <strong>정밀한 수용 기준</strong>을 처음으로 세워봅니다.</p>
+<p>그리고 이 경험이 규칙 파일에 새로운 종류의 규칙을 만들어냅니다. “이론값과 반드시 대조할 것”, “dt 값을 명시할 것”, “단위를 통일할 것” — 이것들은 차시 1-2의 “좌표를 명시할 것”보다 한 단계 위의 규칙입니다. <strong>AI가 ‘그럴듯하게’ 만들지만 ‘정확하게’는 못 만드는</strong> 영역에서만 태어나는 규칙이에요.</p>
+<p>Fowler의 말을 다시 빌려오면, 이 차시는 “판단의 엄격함”이 한 번 더 상승하는 지점입니다. 생성은 점점 더 쉬워집니다. AI는 물리 시뮬레이션 코드를 순식간에 만들어주죠. 하지만 <strong>그 결과가 물리 법칙과 일치하는지 판정하는 엄격함</strong>은 여전히 사람의 몫입니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-핵심-개념">📚 핵심 개념</h2><a class="sl-anchor-link" href="#-핵심-개념"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📚 핵심 개념”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-1-물리-공식--검증-도구">개념 1: 물리 공식 = 검증 도구</h3><a class="sl-anchor-link" href="#개념-1-물리-공식--검증-도구"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 1: 물리 공식 = 검증 도구”</span></a></div>
+<p>학생들에게 물리 공식은 보통 “외워야 하는 것”입니다. 하지만 이 차시에서는 다릅니다. <strong>공식은 AI를 판정하는 심판</strong>입니다.</p>
+<p>포물선 운동을 예로 들어볼까요. 초속도 v₀, 발사각 θ, 중력가속도 g일 때 최고점 높이는 아래와 같습니다.</p>
+<p>$$H = \frac{(v_0 \sin\theta)^2}{2g}$$</p>
+<p>v₀=10m/s, θ=30°, g=9.8m/s²를 넣으면 H ≈ 1.27m. 이게 <strong>이론값</strong>이에요.</p>
+<p>이제 AI에게 같은 조건으로 포물선 시뮬레이션을 시킵니다. 공이 올라갔다 내려오는 동안 y좌표의 최댓값이 1.27m에 가까우면 합격. 1.5m가 나오면? <strong>오차 18%, 불합격</strong>입니다. “보기엔 괜찮은” 시뮬레이션이 수치로 보면 엉터리일 수 있다는 걸 학생이 처음 체감하는 순간입니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-2-오차-허용-범위--얼마나-달라도-괜찮은가">개념 2: 오차 허용 범위 — “얼마나 달라도 괜찮은가”</h3><a class="sl-anchor-link" href="#개념-2-오차-허용-범위--얼마나-달라도-괜찮은가"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 2: 오차 허용 범위 — “얼마나 달라도 괜찮은가””</span></a></div>
+<p>이론값과 시뮬레이션 결과가 <strong>완벽히 일치</strong>하기는 어렵습니다. 시뮬레이션은 시간을 잘게 쪼개서(dt=0.01초 등) 계산하기 때문에, 원리적으로 미세한 오차가 생겨요.</p>
+<p>그래서 “얼마나 달라도 합격으로 칠 것인가”를 <strong>미리</strong> 정해야 합니다. 이게 오차 허용 범위입니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>수준</th><th>허용 오차</th><th>의미</th></tr></thead><tbody><tr><td>기초 (포물선)</td><td>±5%</td><td>일반적인 교육용 시뮬레이션 수준</td></tr><tr><td>중간 (단진자)</td><td>±5%</td><td>소각도 근사 가정 하에서</td></tr><tr><td>심화 (탄성충돌)</td><td>±3%</td><td>보존 법칙은 더 엄격하게</td></tr></tbody></table>
+<p><strong>중요:</strong> 이 기준은 <strong>결과를 보기 전에</strong> 정해야 합니다. 결과를 보고 나서 “음… 10% 차이나네, 뭐 괜찮지” 하면 기준이 결과에 끌려가요. 이건 도입부부터 반복된 원칙입니다.</p>
+<p>오차 계산 공식은 간단합니다.</p>
+<p>$$\text{오차율} = \left|\frac{\text{시뮬레이션값} - \text{이론값}}{\text{이론값}}\right| \times 100%$$</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-3-dt--시간을-얼마나-잘게-쪼갤-것인가">개념 3: dt — “시간을 얼마나 잘게 쪼갤 것인가”</h3><a class="sl-anchor-link" href="#개념-3-dt--시간을-얼마나-잘게-쪼갤-것인가"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 3: dt — “시간을 얼마나 잘게 쪼갤 것인가””</span></a></div>
+<p>물리 시뮬레이션은 <strong>미소 시간 간격 dt</strong>마다 위치와 속도를 업데이트합니다. dt가 작을수록 정확해지지만, 계산량이 많아져요.</p>
+<div class="expressive-code"><link rel="stylesheet" href="/ai-rule-designer-30h-opus47/_astro/ec.v4551.css"><script type="module" src="/ai-rule-designer-30h-opus47/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">GlowScript </span><span style="--0:#F78C6C;--1:#AA0982">3.2</span><span style="--0:#D6DEEB;--1:#403F53"> VPython</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">g </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">9.8</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">dt </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.01</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#919F9F;--1:#5F636F"># 0.01초마다 업데이트</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">ball </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">sphere</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">pos</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">radius</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.2</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">color</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#82AAFF;--1:#3B61B0">color.red</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">ball.velocity </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">10</span><span style="--0:#C792EA;--1:#8844AE">*</span><span style="--0:#B2CCD6;--1:#096E72">cos</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#B2CCD6;--1:#096E72">radians</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">30</span><span style="--0:#D6DEEB;--1:#403F53">))</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">10</span><span style="--0:#C792EA;--1:#8844AE">*</span><span style="--0:#B2CCD6;--1:#096E72">sin</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#B2CCD6;--1:#096E72">radians</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">30</span><span style="--0:#D6DEEB;--1:#403F53">))</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">t </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> ball.pos.y </span><span style="--0:#C792EA;--1:#8844AE">>=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">ball.velocity.y </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> ball.velocity.y </span><span style="--0:#C792EA;--1:#8844AE">-</span><span style="--0:#D6DEEB;--1:#403F53"> g</span><span style="--0:#C792EA;--1:#8844AE">*</span><span style="--0:#D6DEEB;--1:#403F53">dt</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">ball.pos </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> ball.pos </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> ball.velocity</span><span style="--0:#C792EA;--1:#8844AE">*</span><span style="--0:#D6DEEB;--1:#403F53">dt</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">t </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> t </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> dt</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="GlowScript 3.2 VPythong = 9.8dt = 0.01  # 0.01초마다 업데이트ball = sphere(pos=vector(0, 0, 0), radius=0.2, color=color.red)ball.velocity = vector(10*cos(radians(30)), 10*sin(radians(30)), 0)t = 0while ball.pos.y >= 0:    rate(100)    ball.velocity.y = ball.velocity.y - g*dt    ball.pos = ball.pos + ball.velocity*dt    t = t + dt"><div></div></button></div></figure></div>
+<p>AI가 자주 하는 실수: <strong>dt를 너무 크게 잡는 것</strong>. dt=0.1로 하면 오차가 갑자기 20%로 튑니다. “왜 이론값이랑 다르지?”의 범인이 바로 dt일 때가 많아요. 그래서 이 차시에서 학생이 만들게 될 규칙 중 하나가 <strong>“dt 값을 반드시 명시할 것”</strong>입니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-4-단위-통일--ms인가-kmh인가">개념 4: 단위 통일 — “m/s인가 km/h인가”</h3><a class="sl-anchor-link" href="#개념-4-단위-통일--ms인가-kmh인가"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 4: 단위 통일 — “m/s인가 km/h인가””</span></a></div>
+<p>AI는 때때로 입력 단위를 마음대로 해석합니다. “공을 10으로 던져줘”라고만 하면 10m/s인지 10km/h인지 모호하죠. 심지어 명시해도 중간에 섞어버리는 경우가 있어요. 각도를 라디안과 도(degree)를 섞거나, 시간을 초와 밀리초를 섞거나.</p>
+<p><strong>규칙 파일에 들어갈 한 줄:</strong> <em>“모든 물리량의 단위를 명시하고, 시뮬레이션 내에서 통일할 것”</em></p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-차시별-따라하기">🔨 차시별 따라하기</h2><a class="sl-anchor-link" href="#-차시별-따라하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🔨 차시별 따라하기”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="차시-5-50분-물리-공식--검증-도구">차시 5 (50분): 물리 공식 = 검증 도구</h3><a class="sl-anchor-link" href="#차시-5-50분-물리-공식--검증-도구"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “차시 5 (50분): 물리 공식 = 검증 도구”</span></a></div>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-1-선생님-시연--보기엔-괜찮은데-수치로-보면-틀렸다-10분">Step 1: 선생님 시연 — “보기엔 괜찮은데, 수치로 보면 틀렸다” (10분)</h4><a class="sl-anchor-link" href="#step-1-선생님-시연--보기엔-괜찮은데-수치로-보면-틀렸다-10분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 1: 선생님 시연 — “보기엔 괜찮은데, 수치로 보면 틀렸다” (10분)”</span></a></div>
+<p><strong>이 활동의 의도</strong></p>
+<p>학생은 지금까지 “눈으로 보면 되는데?”의 감각에 익숙합니다. 이 감각으로는 물리 시뮬레이션을 검증할 수 없다는 걸 <strong>선생님 시연으로 충격</strong>을 주어야 합니다. 공식은 학생이 계산하지 않습니다. 선생님이 미리 계산한 이론값과 AI 시뮬레이션 결과를 나란히 띄워서 오차를 보여줍니다.</p>
+<p><strong>선생님 스크립트 — 도입</strong></p>
+<blockquote>
+<p>“여러분, 지난 시간에 AI한테 ‘걷는 캐릭터’ 만들어달라 했죠.
+발이 땅을 뚫거나, 팔이 거꾸로 도는 거 다 눈으로 잡아냈어요.
+오늘은 눈으로 못 잡는 거 잡아볼 거예요.”</p>
+</blockquote>
+<p><em>(화면에 AI가 만든 포물선 시뮬레이션을 띄운다. 공이 멀쩡하게 포물선을 그린다.)</em></p>
+<blockquote>
+<p>“이거, 어때 보여요? 포물선 맞죠?”</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>예상 학생 반응</th><th>교사 대응</th></tr></thead><tbody><tr><td>”네, 잘 그리는데요"</td><td>"좋아요. 그럼 하나만 물을게요. 최고점이 정확한가요?"</td></tr><tr><td>"그래프는 그럴듯해요"</td><td>"그럴듯한 거랑 정확한 거는 다르죠. 확인해봅시다."</td></tr><tr><td>"뭐가 문제인지 모르겠어요"</td><td>"맞아요, 눈으로는 안 보여요. 그래서 오늘 새 도구를 쓸 거예요.”</td></tr></tbody></table>
+<p><strong>선생님 스크립트 — 공식 제시</strong></p>
+<blockquote>
+<p>“내가 AI한테 뭐라고 시켰냐면, ‘초속 10m/s, 각도 30도, 중력 9.8로 포물선 시뮬레이션’.
+이 조건에서 최고점 높이가 얼마인지 계산할 수 있어요. 공식 하나면 돼요.”</p>
+</blockquote>
+<p>칠판 또는 화면에 공식을 적습니다.</p>
+<p>$$H = \frac{(v_0 \sin\theta)^2}{2g} = \frac{(10 \times 0.5)^2}{2 \times 9.8} = \frac{25}{19.6} \approx 1.276 \text{ m}$$</p>
+<blockquote>
+<p>“이론값 1.276m. 그럼 AI 시뮬레이션 최고점이 얼마였을까요?”</p>
+</blockquote>
+<p><em>(시뮬레이션 결과를 화면에 표시: ball.pos.y 최댓값 = 1.52m)</em></p>
+<blockquote>
+<p>“1.52m. 오차 계산해볼게요.”</p>
+</blockquote>
+<p>$$\text{오차율} = \left|\frac{1.52 - 1.276}{1.276}\right| \times 100% \approx 19.1%$$</p>
+<blockquote>
+<p>“19%. 이게 많은 건지 적은 건지 감이 안 오죠?
+일반적인 물리 시뮬레이션에서 5% 이상이면 ‘틀렸다’고 판정해요. 19%는 완전 불합격이에요.”</p>
+</blockquote>
+<p><strong>선생님 스크립트 — 메시지</strong></p>
+<blockquote>
+<p>“자, 느꼈어요? 눈으로는 못 잡아요.
+오늘부터 새로운 검증 도구를 씁니다. <strong>공식</strong>이에요.
+공식은 여러분이 외우지 마세요. 선생님이 드릴 거예요.
+여러분이 할 건 <strong>공식으로 이론값 계산 → AI 결과랑 비교 → 오차 몇 %인지 보기</strong>. 이거예요.”</p>
+</blockquote>
+<p><strong>교사 유의사항</strong></p>
+<ul>
+<li>시연용 AI 결과는 수업 전에 미리 만들어둡니다. dt=0.1로 일부러 크게 잡은 코드를 쓰면 오차가 15-20% 나와서 극적 효과가 큽니다.</li>
+<li>공식 유도는 하지 마세요. “이건 물리 수업 아니에요. 공식은 그냥 도구예요.”</li>
+<li>19%라는 숫자를 강조하세요. 이 숫자가 오늘 수업의 “충격 지점”입니다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-2-3단계-시나리오-소개--학생-선택-5분">Step 2: 3단계 시나리오 소개 + 학생 선택 (5분)</h4><a class="sl-anchor-link" href="#step-2-3단계-시나리오-소개--학생-선택-5분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 2: 3단계 시나리오 소개 + 학생 선택 (5분)”</span></a></div>
+<p><strong>선생님 스크립트</strong></p>
+<blockquote>
+<p>“여러분이 선택할 세 가지 시나리오예요. 본인이 해볼 수 있겠다 싶은 걸 골라요.”</p>
+</blockquote>
+<p>학생용 시나리오 선택표 (화면 또는 인쇄물):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>단계</th><th>시나리오</th><th>선생님이 주는 공식</th><th>검증 포인트</th><th>추천 대상</th></tr></thead><tbody><tr><td>기초</td><td>포물선 운동</td><td>최고점 H, 사거리 R</td><td>공의 최고점, 착지 거리</td><td>”수학 자신 없어요”</td></tr><tr><td>중간</td><td>단진자 운동</td><td>주기 T = 2π√(L/g)</td><td>진자가 한 번 왕복하는 시간</td><td>”공식 한두 개는 괜찮아요”</td></tr><tr><td>심화</td><td>두 공의 탄성 충돌</td><td>충돌 후 속도 v₁’, v₂’</td><td>충돌 전후 속도, 에너지 보존</td><td>”좀 도전해보고 싶어요”</td></tr></tbody></table>
+<blockquote>
+<p>“선택 기준은 딱 하나. <strong>이론값을 내가 계산기로 구할 수 있는가.</strong>
+공식만 주면 그 자리에서 계산 가능한 거 골라요. 자신없으면 기초 해요. 이게 본격 수업은 다음 차시에요.”</p>
+</blockquote>
+<p>각자 선택하고 종이에 적도록 합니다.</p>
+<p><strong>교사 유의사항</strong></p>
+<ul>
+<li>선택을 너무 오래 끌지 마세요. 2-3분 안에 확정.</li>
+<li>“난 수학 싫어요”라고 하면: “공식에 숫자 넣고 계산기 두드리는 게 전부예요. 유도 안 해요.”</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-3-학생-활동--시나리오별-공식-받고-이론값-계산-15분">Step 3: 학생 활동 — 시나리오별 공식 받고 이론값 계산 (15분)</h4><a class="sl-anchor-link" href="#step-3-학생-활동--시나리오별-공식-받고-이론값-계산-15분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 3: 학생 활동 — 시나리오별 공식 받고 이론값 계산 (15분)”</span></a></div>
+<p><strong>이 활동의 의도</strong></p>
+<p>AI에게 시키기 전에, 학생이 <strong>자기 손으로 이론값을 먼저 구해야</strong> 검증이 가능합니다. 이 원칙은 도입부부터 반복된 “직접 먼저, AI는 다음” 루프의 연장선이에요. 이론값 = 나의 기준선.</p>
+<p><strong>학생용 공식 카드 (시나리오별 배부 또는 화면 표시)</strong></p>
+<p><strong>📐 포물선 운동 (기초)</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>물리량</th><th>기호</th><th>공식</th></tr></thead><tbody><tr><td>최고점 높이</td><td>H</td><td>H = (v₀ sinθ)² / (2g)</td></tr><tr><td>사거리</td><td>R</td><td>R = v₀² sin(2θ) / g</td></tr><tr><td>최고점 도달 시간</td><td>t_top</td><td>t_top = v₀ sinθ / g</td></tr></tbody></table>
+<p>조건: g = 9.8 m/s², 각도 단위 = 도(°)</p>
+<p><strong>📐 단진자 (중간)</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>물리량</th><th>기호</th><th>공식</th></tr></thead><tbody><tr><td>주기</td><td>T</td><td>T = 2π √(L/g)</td></tr><tr><td>최대 속력</td><td>v_max</td><td>v_max ≈ √(2gL(1 - cosθ₀))</td></tr></tbody></table>
+<p>조건: 소각도(θ₀ &#x3C; 15°), L = 진자 길이(m), θ₀ = 초기 각도</p>
+<p><strong>📐 탄성 충돌 (심화)</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>물리량</th><th>공식</th></tr></thead><tbody><tr><td>충돌 후 v₁’</td><td>v₁’ = ((m₁ - m₂)v₁ + 2m₂v₂) / (m₁ + m₂)</td></tr><tr><td>충돌 후 v₂’</td><td>v₂’ = (2m₁v₁ + (m₂ - m₁)v₂) / (m₁ + m₂)</td></tr><tr><td>운동에너지 (검증용)</td><td>KE = ½mv²</td></tr></tbody></table>
+<p><strong>선생님 스크립트</strong></p>
+<blockquote>
+<p>“공식 받았으면, 본인 시나리오에 <strong>구체적인 숫자</strong>를 정하세요.
+예를 들어 포물선 하는 사람은 ‘초속 15m/s, 각도 45도’ 이렇게.
+너무 어려운 숫자 말고 깔끔한 거로. 그리고 공식에 넣어서 이론값을 <strong>종이에</strong> 적어요.”</p>
+</blockquote>
+<p><strong>학생용 이론값 계산 워크시트</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>항목</th><th>학생 기록</th></tr></thead><tbody><tr><td>선택한 시나리오</td><td></td></tr><tr><td>초기 조건 (수치 + 단위)</td><td></td></tr><tr><td>공식</td><td></td></tr><tr><td>이론값 계산 과정</td><td></td></tr><tr><td><strong>이론값 (수치 + 단위)</strong></td><td></td></tr><tr><td>허용 오차 범위</td><td></td></tr></tbody></table>
+<p><strong>예시 (포물선, 모범 답안)</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>항목</th><th>기록</th></tr></thead><tbody><tr><td>선택 시나리오</td><td>포물선 운동</td></tr><tr><td>초기 조건</td><td>v₀ = 15 m/s, θ = 45°, g = 9.8 m/s²</td></tr><tr><td>공식</td><td>H = (v₀ sinθ)² / (2g)</td></tr><tr><td>계산 과정</td><td>(15 × 0.707)² / 19.6 = 112.5 / 19.6</td></tr><tr><td><strong>이론값</strong></td><td><strong>H ≈ 5.74 m</strong></td></tr><tr><td>허용 오차</td><td>±5% (5.45 m ~ 6.03 m)</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>예상 학생 반응</th><th>교사 대응</th></tr></thead><tbody><tr><td>”sinθ 계산 못 해요”</td><td>계산기 앱 쓰게 하세요. 각도 모드 확인(“DEG” 맞는지)</td></tr><tr><td>“답이 이상해요”</td><td>단위 통일 확인. 각도 단위가 도인지 라디안인지</td></tr><tr><td>”이걸 왜 먼저 해요? AI한테 시키면 되잖아요"</td><td>"AI 결과가 맞는지 어떻게 판정할 건데요? 기준이 없으면 판정 못 해요."</td></tr><tr><td>"숫자를 뭐로 할지 모르겠어요”</td><td>예시 제공: “v₀=10, θ=30 해봐요. 가장 흔한 예제 조건이에요.”</td></tr></tbody></table>
+<p><strong>교사 유의사항</strong></p>
+<ul>
+<li>계산기 앱(Windows 계산기 공학용 모드) 사용을 권장합니다. 각도 단위를 DEG로 맞추는 법을 알려주세요.</li>
+<li>심화(탄성 충돌) 선택 학생은 공식 두 개를 계산해야 하므로 시간 배분 주의.</li>
+<li>이론값을 <strong>종이에 크게</strong> 적게 하세요. 뒤 활동에서 AI 결과와 비교할 때 기준이 됩니다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-4-ai에게-동일-시뮬레이션-요청--수치-비교-시작-20분">Step 4: AI에게 동일 시뮬레이션 요청 → 수치 비교 시작 (20분)</h4><a class="sl-anchor-link" href="#step-4-ai에게-동일-시뮬레이션-요청--수치-비교-시작-20분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 4: AI에게 동일 시뮬레이션 요청 → 수치 비교 시작 (20분)”</span></a></div>
+<p><strong>이 활동의 의도</strong></p>
+<p>학생은 이미 차시 1-4에서 “정밀한 명세로 AI에게 시키기”를 연습했습니다. 물리 시뮬레이션도 <strong>초기 조건을 명세에 정확히 적어서</strong> 시키는 게 핵심이에요. 그리고 결과를 <strong>수치로</strong> 검증하는 첫 경험을 합니다.</p>
+<p><strong>선생님 스크립트</strong></p>
+<blockquote>
+<p>“이제 AI한테 시킬 거예요. 그냥 ‘포물선 만들어줘’ 하면 안 돼요. 명세를 구체적으로 적어요.
+포물선 하는 사람은 이런 식으로:”</p>
+</blockquote>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">GlowScript VPython으로 포물선 운동 시뮬레이션을 만들어줘.</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">초기 조건:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 초속도 v₀ = 15 m/s</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 발사각 θ = 45도</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 중력가속도 g = 9.8 m/s²</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 시간 간격 dt = 0.01초</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 공은 반지름 0.3, 빨간색</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">요구사항:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 공이 땅(y=0)에 닿으면 시뮬레이션 종료</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 시뮬레이션 중 공의 최대 y좌표를 print로 출력</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 각도 단위는 도(°)로 받아서 내부에서 라디안으로 변환</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="GlowScript VPython으로 포물선 운동 시뮬레이션을 만들어줘.초기 조건:- 초속도 v₀ = 15 m/s- 발사각 θ = 45도- 중력가속도 g = 9.8 m/s²- 시간 간격 dt = 0.01초- 공은 반지름 0.3, 빨간색요구사항:- 공이 땅(y=0)에 닿으면 시뮬레이션 종료- 시뮬레이션 중 공의 최대 y좌표를 print로 출력- 각도 단위는 도(°)로 받아서 내부에서 라디안으로 변환"><div></div></button></div></figure></div>
+<blockquote>
+<p>“자, 봐요. <strong>초기 조건 모두 명시, dt 명시, 단위 명시</strong>. 이게 오늘 수업에서 배울 명세 기준이에요.”</p>
+</blockquote>
+<p>학생들이 각자 AI에게 시킨 뒤, GlowScript에서 실행하고 <strong>최대 y좌표(또는 주기, 충돌 후 속도)를 확인</strong>합니다.</p>
+<p><strong>비교 워크시트</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>항목</th><th>기록</th></tr></thead><tbody><tr><td>이론값</td><td>(Step 3에서 계산한 값)</td></tr><tr><td>AI 시뮬레이션 결과값</td><td></td></tr><tr><td>오차 (절댓값)</td><td>|시뮬-이론|</td></tr><tr><td>오차율 (%)</td><td>(오차 / 이론값) × 100</td></tr><tr><td>허용 범위 (±5%) 안인가?</td><td>[ ] 합격  [ ] 불합격</td></tr><tr><td>불합격이면 의심 원인</td><td>(dt? 단위? 공식 오류?)</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>예상 학생 반응</th><th>교사 대응</th></tr></thead><tbody><tr><td>”AI가 dt 빼먹었어요"</td><td>"좋은 발견! 그걸 규칙으로 만들 거예요."</td></tr><tr><td>"오차가 20% 나왔어요"</td><td>"왜 이렇게 큰지 AI 코드를 보고 추리해봐요. dt? 공식 틀림? 단위?"</td></tr><tr><td>"오차 0.1% 나왔어요, 합격!"</td><td>"훌륭해요. 그 명세가 뭐가 달랐는지 보세요. 다음번에 그대로 쓸 수 있어요."</td></tr><tr><td>"AI가 각도를 라디안으로 해석했어요"</td><td>"바로 그거예요. 규칙 파일에 적어요: ‘단위를 명시해도 AI가 혼동할 수 있다, 명시적으로 도→라디안 변환 요구할 것’”</td></tr></tbody></table>
+<p><strong>교사 유의사항</strong></p>
+<ul>
+<li>AI가 생각보다 잘 만들어서 오차 0.5% 같은 게 나올 수 있습니다. 그 경우: “다음 차시에서 더 어려운 조건으로 깨뜨려볼 거예요.”</li>
+<li>한 학생이 오차 20%가 나왔으면, 그 사례를 <strong>전체에 공유</strong>하세요. 원인 추리가 규칙의 씨앗입니다.</li>
+<li>학생이 “AI 코드 이해 못해요”라고 하면: “다 이해할 필요 없어요. <strong>dt 값이 얼마인지</strong>, <strong>각도를 라디안으로 바꿨는지</strong>, 이 두 가지만 보세요.”</li>
+<li>시간 관리: 5분 남았을 때 “이번 차시 여기까지”라고 자르고 정리 유도.</li>
+</ul>
+<p><strong>Step 4 마무리</strong></p>
+<blockquote>
+<p>“오늘 본 숫자들 종이에 잘 적어두세요. 다음 시간에 이걸로 <strong>수용 기준</strong>이랑 <strong>규칙</strong>을 만들 거예요.”</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="차시-6-50분-수치-기반-수용-기준">차시 6 (50분): 수치 기반 수용 기준</h3><a class="sl-anchor-link" href="#차시-6-50분-수치-기반-수용-기준"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “차시 6 (50분): 수치 기반 수용 기준”</span></a></div>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-1-수치-기반-수용-기준-작성법-10분">Step 1: 수치 기반 수용 기준 작성법 (10분)</h4><a class="sl-anchor-link" href="#step-1-수치-기반-수용-기준-작성법-10분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 1: 수치 기반 수용 기준 작성법 (10분)”</span></a></div>
+<p><strong>이 활동의 의도</strong></p>
+<p>차시 1-2에서 학생들은 “팔이 몸통 관통 안 하기” 같은 <strong>시각 기준</strong>을 만들었습니다. 이번 차시에서는 <strong>수치 기준</strong>을 만듭니다. 시각 기준은 ‘있다/없다’로 끝나지만, 수치 기준은 ‘얼마나’가 들어가요. 이 차이를 체감시키는 게 Step 1의 목적입니다.</p>
+<p><strong>선생님 스크립트</strong></p>
+<blockquote>
+<p>“지난 차시에서 여러분이 만든 수용 기준 예시 봅시다.
+‘팔이 몸통을 관통하지 않는다’, ‘좌우 대칭이다’. 이거 다 <strong>눈으로 보면 돼요</strong>.
+그런데 오늘은 이거로 안 돼요. 왜냐?”</p>
+</blockquote>
+<blockquote>
+<p>“‘공이 포물선을 그린다’ — 이거 기준이 될까요? 안 돼요. 그럴듯한 포물선 수십 개가 다 다른 답이에요.
+우리가 필요한 건 <strong>정확한 숫자에 얼마나 가까운가</strong>예요.”</p>
+</blockquote>
+<p><strong>시각 기준 vs 수치 기준 비교표</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>종류</th><th>시각 기준 (차시 1-2)</th><th>수치 기준 (차시 5-6)</th></tr></thead><tbody><tr><td>판정 방식</td><td>눈으로 본다</td><td>숫자를 계산한다</td></tr><tr><td>예시</td><td>”팔이 몸통 바깥"</td><td>"최고점 오차 ±5% 이내”</td></tr><tr><td>결과</td><td>합격 / 불합격</td><td>오차율 X%, 허용 범위 안/밖</td></tr><tr><td>주관성</td><td>조금 있음</td><td>거의 없음</td></tr></tbody></table>
+<p><strong>수치 수용 기준에 반드시 들어갈 4가지</strong></p>
+<p>선생님이 칠판에 네 개를 적으며 하나씩 설명합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>요소</th><th>예시</th></tr></thead><tbody><tr><td>① 측정 대상</td><td>”공의 최대 y좌표”</td></tr><tr><td>② 이론값</td><td>”5.74 m”</td></tr><tr><td>③ 허용 오차</td><td>”±5% (즉 5.45-6.03 m)“</td></tr><tr><td>④ 초기 조건</td><td>”v₀=15, θ=45°, g=9.8, dt=0.01”</td></tr></tbody></table>
+<blockquote>
+<p>“이 네 개가 다 들어가야 ‘수치 기준’이에요. 하나라도 빠지면 못 써요.
+예를 들어 ‘최고점이 5.74에 가까울 것’ — 이건 기준이 아니에요. ‘가까울 것’이 몇 %인지가 없잖아요.”</p>
+</blockquote>
+<p><strong>좋은 예시와 부족한 예시</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>부족한 예시</th><th>왜 부족한가</th><th>고친 버전</th></tr></thead><tbody><tr><td>”공이 포물선처럼 움직인다”</td><td>주관적, 측정 불가</td><td>”공의 최대 y좌표가 5.74m ± 5% 이내"</td></tr><tr><td>"최고점이 맞아야 함”</td><td>허용 오차 없음</td><td>”최고점 오차율 5% 이내"</td></tr><tr><td>"주기가 비슷해야 함”</td><td>이론값, 허용 오차 모두 없음</td><td>”주기 T가 2.01초 ± 3% 이내 (L=1m, g=9.8)"</td></tr><tr><td>"충돌 후 빨라야 함”</td><td>측정 대상이 명확하지 않음</td><td>”충돌 후 v₁’ = 2.5 m/s ± 3%”</td></tr></tbody></table>
+<p><strong>교사 유의사항</strong></p>
+<ul>
+<li>“허용 오차”라는 단어를 학생들이 낯설어할 수 있습니다. “시험 가채점할 때 ±1점 오차로 맞춰주는 거랑 비슷해요” 같은 일상 비유가 도움됩니다.</li>
+<li>수치 기준을 <strong>결과를 보기 전에</strong> 쓰게 하세요. 이미 시뮬레이션 결과를 본 상태라면, 이번엔 새 조건(숫자만 바꿔서)으로 다시 하게 하면 됩니다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-2-수용-기준-적용--ai-결과-검증--수정-요청-반복-20분">Step 2: 수용 기준 적용 → AI 결과 검증 → 수정 요청 반복 (20분)</h4><a class="sl-anchor-link" href="#step-2-수용-기준-적용--ai-결과-검증--수정-요청-반복-20분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 2: 수용 기준 적용 → AI 결과 검증 → 수정 요청 반복 (20분)”</span></a></div>
+<p><strong>이 활동의 의도</strong></p>
+<p>수치 기준을 <strong>머리로만</strong> 알면 안 되고, <strong>실제로 적용</strong>해봐야 체득됩니다. 이 Step은 차시 5 Step 4에서 각자 만든 시뮬레이션을 <strong>새 조건</strong>으로 다시 돌리면서, 수용 기준 → 판정 → 수정 요청 → 재검증 사이클을 경험합니다.</p>
+<p><strong>선생님 스크립트</strong></p>
+<blockquote>
+<p>“지난 시간에 포물선, 진자, 충돌 중 하나 해봤죠.
+이번엔 <strong>조건 숫자를 바꿔서 다시</strong> 할 거예요. 대신 이번엔 세 가지를 순서대로 해요.</p>
+<ol>
+<li>수용 기준 먼저 종이에 적기 (이론값 계산 포함)</li>
+<li>AI한테 시키고 결과 보기</li>
+<li>오차 계산해서 합격/불합격 판정”</li>
+</ol>
+</blockquote>
+<p><strong>학생용 수용 기준 워크시트</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>항목</th><th>학생 기록</th></tr></thead><tbody><tr><td>시나리오</td><td></td></tr><tr><td>새 초기 조건 (모든 수치 + 단위)</td><td></td></tr><tr><td>dt 값</td><td></td></tr><tr><td>측정 대상</td><td></td></tr><tr><td>이론값 (계산 과정 포함)</td><td></td></tr><tr><td>허용 오차 (%)</td><td></td></tr><tr><td>합격 범위 (수치)</td><td></td></tr><tr><td><strong>— AI 결과 받은 후 기록 —</strong></td><td></td></tr><tr><td>AI 결과값</td><td></td></tr><tr><td>오차율 (%)</td><td></td></tr><tr><td>판정</td><td>[ ] 합격  [ ] 불합격</td></tr><tr><td>불합격 원인 추리</td><td></td></tr><tr><td>다음 수정 요청에 넣을 한 줄</td><td></td></tr></tbody></table>
+<p><strong>수정 요청 루프 진행 방법</strong></p>
+<p>첫 요청에서 불합격이 나오면, 학생은 AI에게 <strong>구체적인 수정 요청</strong>을 보냅니다. “다시 해줘”가 아니라:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">이전 시뮬레이션에서 최고점이 6.8m가 나왔는데,</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">공식 H = (v₀ sinθ)² / (2g)로 계산한 이론값은 5.74m야.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">오차가 18%로 너무 크다. 원인은 다음 중 하나일 거야:</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">1. dt가 너무 크게 잡힌 건 아닌지 (0.01초로 설정되어 있는지 확인)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">2. 각도를 라디안이 아닌 도(degree)로 잘못 사용한 건 아닌지</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">3. 중력가속도 g 값이 다른 값으로 설정된 건 아닌지</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">코드를 점검해서 원인을 수정하고, 최고점이 5.74m ± 5% 이내가 되도록 다시 만들어줘.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="이전 시뮬레이션에서 최고점이 6.8m가 나왔는데,공식 H = (v₀ sinθ)² / (2g)로 계산한 이론값은 5.74m야.오차가 18%로 너무 크다. 원인은 다음 중 하나일 거야:1. dt가 너무 크게 잡힌 건 아닌지 (0.01초로 설정되어 있는지 확인)2. 각도를 라디안이 아닌 도(degree)로 잘못 사용한 건 아닌지3. 중력가속도 g 값이 다른 값으로 설정된 건 아닌지코드를 점검해서 원인을 수정하고, 최고점이 5.74m ± 5% 이내가 되도록 다시 만들어줘."><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>예상 학생 반응</th><th>교사 대응</th></tr></thead><tbody><tr><td>”재요청해도 똑같이 틀려요"</td><td>"AI한테 뭐가 틀렸는지 더 구체적으로 말해요. ‘틀렸다’가 아니라 ‘이론값 5.74인데 6.8 나왔다, dt 확인해줘’."</td></tr><tr><td>"한 번 수정했더니 합격했어요"</td><td>"그 수정 요청에 뭐가 들어갔나요? 그게 다음 규칙이에요."</td></tr><tr><td>"AI가 dt를 0.1로 하고 있었어요!"</td><td>"찾았다! 그게 오늘의 첫 번째 규칙이에요. ‘규칙 파일에 dt는 0.01 이하로 명시’."</td></tr><tr><td>"오차 2% 나왔어요"</td><td>"합격! 명세에 뭘 잘 썼는지 기억해두세요.”</td></tr></tbody></table>
+<p><strong>교사 유의사항</strong></p>
+<ul>
+<li>수정 요청 사이클은 <strong>최대 3회</strong>로 제한하세요. 그 이상 돌리면 시간이 없습니다.</li>
+<li>합격한 학생은 “어떤 명세가 결정적이었는지” 옆 친구에게 설명하게 하세요. 이게 Step 3에서 규칙으로 정제됩니다.</li>
+<li>불합격만 계속 나는 학생은 선생님이 붙어서: “코드 안에 dt가 몇이에요?” “각도 변환 코드 있어요?” 하나씩 짚어줍니다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-3-규칙-파일-업데이트-15분">Step 3: 규칙 파일 업데이트 (15분)</h4><a class="sl-anchor-link" href="#step-3-규칙-파일-업데이트-15분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 3: 규칙 파일 업데이트 (15분)”</span></a></div>
+<p><strong>이 활동의 의도</strong></p>
+<p>오늘 경험한 실패·성공에서 뽑아낸 규칙을 <strong>규칙 파일에 실제로 추가</strong>합니다. 중요한 건 <strong>“사건 기록”과 함께</strong> 추가하는 것. “왜 이 규칙이 생겼는지”가 기록되어야 나중에 의미 있습니다.</p>
+<p><strong>선생님 스크립트</strong></p>
+<blockquote>
+<p>“오늘 경험한 것 중에 ‘앞으로도 계속 적용할 규칙’을 뽑을 거예요.
+규칙은 세 조건을 만족해야 해요:</p>
+<ol>
+<li>구체적이어야 한다 (숫자나 체크 항목이 있어야)</li>
+<li>사건 기록이 있어야 한다 (이 규칙이 왜 생겼는지)</li>
+<li>검증 가능해야 한다 (지킨 건지 아닌지 판정 가능)”</li>
+</ol>
+</blockquote>
+<p><strong>이 차시에서 학생이 추가할 규칙 예시 (4가지 범주)</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>범주</th><th>규칙</th><th>사건 기록</th></tr></thead><tbody><tr><td>이론값 대조</td><td>”물리 시뮬레이션은 이론값과 반드시 대조할 것. 허용 오차를 사전에 정할 것"</td><td>"AI가 만든 포물선 최고점이 보기엔 멀쩡한데 실제로 이론값보다 19% 높았음”</td></tr><tr><td>dt 명시</td><td>”시뮬레이션 명세에 dt 값을 반드시 명시할 것 (권장: dt ≤ 0.01초)"</td><td>"AI가 기본값으로 dt=0.1을 썼더니 오차 18% 발생”</td></tr><tr><td>단위 통일</td><td>”모든 물리량의 단위를 명시하고, 각도는 명시적으로 도/라디안 변환을 요구할 것"</td><td>"AI가 각도 45를 라디안으로 해석해서 공이 거의 수직으로 날아감”</td></tr><tr><td>초기 조건 명시</td><td>”초기 조건(v₀, θ, g, 질량, 길이 등)을 빠짐없이 수치로 명시할 것"</td><td>"g를 안 적었더니 AI가 10으로 대충 넣었음”</td></tr></tbody></table>
+<p><strong>학생용 규칙 추가 워크시트</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody><tr><td>오늘 내가 겪은 AI 실수 1</td><td></td></tr><tr><td>이 실수에서 뽑은 규칙</td><td></td></tr><tr><td>이 규칙의 검증 방법</td><td></td></tr><tr><td>오늘 내가 겪은 AI 실수 2</td><td></td></tr><tr><td>이 실수에서 뽑은 규칙</td><td></td></tr><tr><td>이 규칙의 검증 방법</td><td></td></tr></tbody></table>
+<blockquote>
+<p>“본인이 겪은 실수만 규칙으로 쓰세요. 친구가 겪은 건 참고만 하고.
+최소 2개, 많으면 4개까지 추가해요. 규칙 파일에 ’## 물리 시뮬레이션 규칙’ 섹션 만들고 밑에 붙여요.”</p>
+</blockquote>
+<p><strong>규칙 파일 성장 예시 (차시 5-6 종료 시점)</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="markdown"><code><div class="ec-line"><div class="code"><span style="--0:#82B1FF;--1:#3B61B0">## 3D 창작/시뮬레이션에서의 규칙</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#82B1FF;--1:#3B61B0">### 조형 (차시 1-2)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 좌표를 명시하지 않으면 AI가 임의로 배치한다 → 모든 도형의 pos 명시</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: "커비 만들어줘" 했더니 발이 머리 위에 나옴</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 명세에 없는 도형을 AI가 추가한다 → 추가 금지 명시</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: 커비에 팔이 생김</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#82B1FF;--1:#3B61B0">### 애니메이션 (차시 3-4)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 회전축을 명시하지 않으면 기본 y축이 된다 → axis 파라미터 명시</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: 팔이 몸통 중심으로 회전해서 관통함</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> dt와 rate()를 혼동한다 → rate()는 FPS, dt는 시간 간격으로 구분</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: rate(100)만 썼더니 움직임 속도가 하드웨어에 따라 달라짐</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#82B1FF;--1:#3B61B0">### 물리 시뮬레이션 (차시 5-6) ★ 오늘 추가</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 물리 시뮬은 이론값과 대조 필수. 허용 오차는 사전에 정할 것 (일반 ±5%)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: 포물선 최고점이 보기엔 멀쩡한데 이론값 대비 19% 높았음</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> dt를 반드시 명시할 것 (권장 dt ≤ 0.01)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: AI 기본값 dt=0.1로 오차 18%</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 각도 단위는 '도로 입력 후 라디안 변환' 명시</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: AI가 45를 라디안으로 해석, 공이 수직으로 날아감</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 초기 조건(v₀, θ, g, m, L 등)을 빠짐없이 수치로 명시</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: g 생략했더니 AI가 임의로 10 사용</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="## 3D 창작/시뮬레이션에서의 규칙### 조형 (차시 1-2)- 좌표를 명시하지 않으면 AI가 임의로 배치한다 → 모든 도형의 pos 명시  ← 사건: &#x22;커비 만들어줘&#x22; 했더니 발이 머리 위에 나옴- 명세에 없는 도형을 AI가 추가한다 → 추가 금지 명시  ← 사건: 커비에 팔이 생김### 애니메이션 (차시 3-4)- 회전축을 명시하지 않으면 기본 y축이 된다 → axis 파라미터 명시  ← 사건: 팔이 몸통 중심으로 회전해서 관통함- dt와 rate()를 혼동한다 → rate()는 FPS, dt는 시간 간격으로 구분  ← 사건: rate(100)만 썼더니 움직임 속도가 하드웨어에 따라 달라짐### 물리 시뮬레이션 (차시 5-6) ★ 오늘 추가- 물리 시뮬은 이론값과 대조 필수. 허용 오차는 사전에 정할 것 (일반 ±5%)  ← 사건: 포물선 최고점이 보기엔 멀쩡한데 이론값 대비 19% 높았음- dt를 반드시 명시할 것 (권장 dt ≤ 0.01)  ← 사건: AI 기본값 dt=0.1로 오차 18%- 각도 단위는 &#x27;도로 입력 후 라디안 변환&#x27; 명시  ← 사건: AI가 45를 라디안으로 해석, 공이 수직으로 날아감- 초기 조건(v₀, θ, g, m, L 등)을 빠짐없이 수치로 명시  ← 사건: g 생략했더니 AI가 임의로 10 사용"><div></div></button></div></figure></div>
+<p><strong>교사 유의사항</strong></p>
+<ul>
+<li>규칙의 <strong>수보다 질</strong>이 중요합니다. “사건 기록이 없는 규칙은 외워 쓴 것”이라는 원칙 재강조.</li>
+<li>학생이 일반적인 규칙만 쓰려 하면 (“AI를 잘 써야 한다” 같은): “오늘 겪은 구체적 사건은 뭐였어요?”</li>
+<li>추가한 규칙을 <strong>옆 학생과 교환</strong>해서 보게 하세요. “내가 안 겪은 실수지만 배울 만한 규칙”을 발견합니다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="step-4-검증의-진화-정리-5분">Step 4: 검증의 진화 정리 (5분)</h4><a class="sl-anchor-link" href="#step-4-검증의-진화-정리-5분"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “Step 4: 검증의 진화 정리 (5분)”</span></a></div>
+<p><strong>이 활동의 의도</strong></p>
+<p>오늘 일어난 변화를 <strong>메타적으로</strong> 한 번 짚어줍니다. “검증이 눈 → 수치로 올라갔다”는 감각을 학생이 자기 언어로 가져가게 하는 게 목적입니다. 1-2분으로 짧게.</p>
+<p><strong>선생님 스크립트</strong></p>
+<blockquote>
+<p>“자, 오늘 뭐가 바뀌었는지 한 줄로 정리해볼게요.”</p>
+</blockquote>
+<p>칠판에 다음을 띄웁니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>시점</th><th>검증 방법</th><th>판정 도구</th></tr></thead><tbody><tr><td>도입부 (챗봇)</td><td>대화 상식</td><td>”말이 안 되잖아”</td></tr><tr><td>트랙 A 차시 1-2</td><td>눈 (시각)</td><td>“팔이 거기 있으면 안 되지”</td></tr><tr><td>트랙 A 차시 3-4</td><td>눈 (동작)</td><td>“저렇게 걸으면 안 되지”</td></tr><tr><td><strong>트랙 A 차시 5-6 (오늘)</strong></td><td><strong>수식 + 수치</strong></td><td><strong>”오차 19%면 안 되지”</strong></td></tr></tbody></table>
+<blockquote>
+<p>“검증 도구가 점점 <strong>더 정밀</strong>해지고 있어요. 그리고 앞으로 데이터 분석 트랙 가면 또 새로운 도구 써요. <strong>논리적 타당성</strong>이라는 도구. Pico 갈 땐 <strong>물리적 동작</strong>이라는 도구.</p>
+<p>공통점 하나만 기억해요. <strong>AI한테 뭘 시키든, 내가 기준을 먼저 들고 있어야 판정할 수 있다.</strong> 기준이 없으면 AI 결과는 그냥 받아들일 수밖에 없어요.”</p>
+</blockquote>
+<blockquote>
+<p>“오늘 수고했어요. 규칙 파일 커밋 꼭 하고 가요.”</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="️-자주-하는-실수">⚠️ 자주 하는 실수</h2><a class="sl-anchor-link" href="#️-자주-하는-실수"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “⚠️ 자주 하는 실수”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-1-학생에게-공식-유도를-시킨다">실수 1: 학생에게 공식 유도를 시킨다</h3><a class="sl-anchor-link" href="#실수-1-학생에게-공식-유도를-시킨다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 1: 학생에게 공식 유도를 시킨다”</span></a></div>
+<p>이 수업은 물리 수업이 아닙니다. 공식은 <strong>완성된 도구</strong>로 제공하세요. “H = (v₀sinθ)²/(2g)가 왜 이렇게 되는지 유도해보자” — 이걸 하는 순간 물리 수업이 되고, 학생은 검증 도구가 아니라 수식 자체에 끌려갑니다.</p>
+<ul>
+<li>❌ “이 공식 어떻게 나왔는지 알아볼까요?”</li>
+<li>✅ “공식은 도구예요. 숫자 넣고 계산기로 돌리면 이론값이 나와요.”</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-2-수용-기준을-결과-본-후에-세운다">실수 2: 수용 기준을 결과 본 후에 세운다</h3><a class="sl-anchor-link" href="#실수-2-수용-기준을-결과-본-후에-세운다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 2: 수용 기준을 결과 본 후에 세운다”</span></a></div>
+<p>“AI 돌려보고 나서 수용 기준 써봐요” — 이렇게 하면 기준이 결과에 맞춰집니다. 오차 15%가 나오면 “아, 15%까지는 괜찮지 뭐” 하는 식으로요. 이건 도입부부터 반복된 원칙입니다.</p>
+<ul>
+<li>❌ AI 시뮬 결과 확인 → 그걸 보고 수용 기준 작성</li>
+<li>✅ 이론값 계산 + 허용 오차 결정 → AI 시뮬 실행 → 판정</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-3-수치-기준을-모호하게-쓴다">실수 3: 수치 기준을 모호하게 쓴다</h3><a class="sl-anchor-link" href="#실수-3-수치-기준을-모호하게-쓴다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 3: 수치 기준을 모호하게 쓴다”</span></a></div>
+<p>“최고점이 이론값에 가까워야 함” — 이건 기준이 아닙니다. “가까움”이 얼마인지 수치로 정해야 해요.</p>
+<ul>
+<li>❌ “비슷해야 함”, “맞아야 함”, “정확해야 함”</li>
+<li>✅ “오차 ±5% 이내”, “5.45-6.03m 범위”</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-4-ai-코드-디버깅을-선생님이-대신-해준다">실수 4: AI 코드 디버깅을 선생님이 대신 해준다</h3><a class="sl-anchor-link" href="#실수-4-ai-코드-디버깅을-선생님이-대신-해준다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 4: AI 코드 디버깅을 선생님이 대신 해준다”</span></a></div>
+<p>학생이 “안 돼요”라고 할 때, 코드를 선생님이 고쳐주는 순간 이 수업은 끝납니다. 대신 <strong>체크리스트</strong>를 주세요.</p>
+<ul>
+<li>❌ “여기 dt 값이 잘못됐네요, 0.01로 고치세요”</li>
+<li>✅ “AI 코드에 dt 몇으로 되어 있어요? 각도 변환 코드 있어요? 이 두 개만 확인해봐요”</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-5-5-이내면-어쨌든-합격에-안주한다">실수 5: “5% 이내면 어쨌든 합격”에 안주한다</h3><a class="sl-anchor-link" href="#실수-5-5-이내면-어쨌든-합격에-안주한다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 5: “5% 이내면 어쨌든 합격”에 안주한다”</span></a></div>
+<p>오차 5%는 <strong>최소 기준</strong>입니다. 숙련된 학생은 1%, 0.5%까지 줄일 수 있어야 해요. “합격”으로 끝내지 말고 “왜 3%가 나왔지? 더 줄일 수 있나?”로 연결하세요. 이것이 “엄격함의 재배치”입니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-스스로-점검하기">✅ 스스로 점검하기</h2><a class="sl-anchor-link" href="#-스스로-점검하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “✅ 스스로 점검하기”</span></a></div>
+<p>차시 5-6을 마친 후 이 질문들에 답해보세요. (선생님 본인 점검용)</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 학생들이 공식을 “외우는 것”이 아니라 “검증 도구”로 사용했는가?</li>
+<li class="task-list-item"><input type="checkbox" disabled> 모든 학생이 최소 1회 이상 “이론값 계산 → AI 결과 비교 → 오차 %“의 사이클을 돌았는가?</li>
+<li class="task-list-item"><input type="checkbox" disabled> 수용 기준에 “이론값, 허용 오차, 초기 조건, dt”가 모두 포함되었는가?</li>
+<li class="task-list-item"><input type="checkbox" disabled> 규칙 파일에 ‘물리 시뮬레이션’ 범주의 규칙이 최소 2개 이상 추가되었는가?</li>
+<li class="task-list-item"><input type="checkbox" disabled> 추가된 규칙 각각에 “사건 기록”이 붙어 있는가?</li>
+<li class="task-list-item"><input type="checkbox" disabled> 학생이 AI 실패 원인을 스스로 추리했는가 (dt? 단위? 초기 조건?)</li>
+<li class="task-list-item"><input type="checkbox" disabled> 수업 중 선생님이 AI 코드를 직접 고쳐준 적이 있는가? (있다면 다음엔 안 고쳐주기)</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-더-해보기">🚀 더 해보기</h2><a class="sl-anchor-link" href="#-더-해보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🚀 더 해보기”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="활동-1-오차-줄이기-챌린지-10-15분-차시-6-여유-시-추가">활동 1: 오차 줄이기 챌린지 (10-15분, 차시 6 여유 시 추가)</h3><a class="sl-anchor-link" href="#활동-1-오차-줄이기-챌린지-10-15분-차시-6-여유-시-추가"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “활동 1: 오차 줄이기 챌린지 (10-15분, 차시 6 여유 시 추가)”</span></a></div>
+<p>같은 포물선 조건에서 오차를 <strong>누가 더 줄일 수 있는지</strong> 경쟁. dt를 0.001로 줄이거나, 수치 해석 방법(Euler → Verlet)을 바꾸는 등.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="활동-2-공기-저항-추가하기-심화-학생용">활동 2: 공기 저항 추가하기 (심화 학생용)</h3><a class="sl-anchor-link" href="#활동-2-공기-저항-추가하기-심화-학생용"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “활동 2: 공기 저항 추가하기 (심화 학생용)”</span></a></div>
+<p>이론값 공식이 간단한 포물선 운동에, AI에게 공기 저항(항력 F = -kv)을 추가하게 시키고, 이론 공식이 무너지는 것을 관찰. “언제 검증 도구가 더 복잡해져야 하는가”를 체감.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="활동-3-단진자의-소각도-근사-깨보기">활동 3: 단진자의 소각도 근사 깨보기</h3><a class="sl-anchor-link" href="#활동-3-단진자의-소각도-근사-깨보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “활동 3: 단진자의 소각도 근사 깨보기”</span></a></div>
+<p>T = 2π√(L/g)는 소각도(θ &#x3C; 15°)에서만 성립. 학생이 AI에게 θ=60°로 시뮬 시키고, 이론값과 오차가 커지는 것을 확인. “공식의 <strong>가정 조건</strong>도 수용 기준의 일부”라는 교훈.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-확인-문제">📝 확인 문제</h2><a class="sl-anchor-link" href="#-확인-문제"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📝 확인 문제”</span></a></div>
+<p><strong>문제 1 (객관식)</strong> 수치 기반 수용 기준에 <strong>반드시 포함되어야 할</strong> 요소가 <strong>아닌</strong> 것은?</p>
+<p>① 측정 대상
+② 이론값
+③ 허용 오차
+④ AI 모델의 이름
+⑤ 초기 조건</p>
+<details><summary>정답 확인</summary>
+<p><strong>정답: ④</strong></p>
+<p>수용 기준은 “무엇을(측정 대상) 얼마까지(허용 오차) 이론값에 맞게(이론값) 어떤 조건에서(초기 조건) 평가하는가”로 구성됩니다. AI 모델 이름은 수용 기준과 무관합니다.</p>
+</details>
+<p><strong>문제 2 (객관식)</strong> AI가 만든 포물선 시뮬레이션에서 이론값 대비 오차가 18%로 크게 나왔다. <strong>가장 먼저 확인할 원인</strong>으로 적절한 것은?</p>
+<p>① 학생의 계산기가 고장났는지
+② 시뮬레이션의 dt 값과 각도 단위(도/라디안) 변환
+③ GlowScript 브라우저 버전
+④ AI가 한국어를 지원하는지</p>
+<details><summary>정답 확인</summary>
+<p><strong>정답: ②</strong></p>
+<p>물리 시뮬레이션에서 오차가 10%를 넘을 때 가장 흔한 원인은 (1) dt가 너무 큼 (2) 각도 단위 혼동입니다. 이 두 가지가 이 차시에서 만드는 핵심 규칙의 근거이기도 합니다.</p>
+</details>
+<p><strong>문제 3 (서술형)</strong> 학생이 AI에게 “포물선 운동 시뮬레이션 만들어줘”라고 요청했더니, 공은 포물선을 그리는데 최고점이 이론값보다 19% 높게 나왔다. 이 학생이 <strong>규칙 파일에 추가해야 할 규칙 2개</strong>를 “규칙 + 사건 기록” 형식으로 작성하시오.</p>
+<details><summary>정답 확인</summary>
+<p><strong>모범 답안:</strong></p>
+<ol>
+<li>
+<p><strong>규칙:</strong> 물리 시뮬레이션을 요청할 때 dt 값을 반드시 명시하고, 권장값은 dt ≤ 0.01로 할 것.
+<strong>사건 기록:</strong> “포물선 시뮬을 AI에게 시켰더니 dt=0.1로 만들어서 최고점 오차가 19% 나왔음.”</p>
+</li>
+<li>
+<p><strong>규칙:</strong> 물리 시뮬레이션 결과는 반드시 이론값과 대조하고, 허용 오차(예: ±5%)를 사전에 정할 것.
+<strong>사건 기록:</strong> “AI가 만든 포물선이 보기엔 멀쩡했지만 수치로 검증하니 이론값과 19% 차이가 났음.”</p>
+</li>
+</ol>
+<p><strong>채점 포인트:</strong></p>
+<ul>
+<li>규칙이 구체적인가 (숫자 또는 체크 항목 포함)</li>
+<li>사건 기록이 “실제로 겪은 실수”를 구체적으로 묘사하는가</li>
+<li>규칙이 검증 가능한가 (지켰는지 아닌지 판정 가능)</li>
+</ul>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-다음-장으로">🔗 다음 장으로</h2><a class="sl-anchor-link" href="#-다음-장으로"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🔗 다음 장으로”</span></a></div>
+<p>차시 5-6에서 검증이 <strong>눈 → 수치</strong>로 올라갔습니다. 규칙 파일에 “이론값 대조”, “dt 명시”, “단위 통일” 같은 <strong>수치 검증 규칙</strong>이 새로 들어갔어요.</p>
+<p><strong>차시 7-8 (트랙 A 마지막): 자유 프로젝트 + 규칙 파일 중간 리뷰</strong></p>
+<p>학생은 이제 조형/애니메이션/시뮬레이션 중 하나를 자유 선택해서 프로젝트를 완성합니다. 평가 기준은 시나리오 난이도가 아니라 <strong>명세와 검증의 정밀함</strong>. 그리고 선생님이 규칙 파일을 <strong>중간 리뷰</strong>하며, 좋은 규칙과 모호한 규칙을 비교해 학생이 자기 규칙을 정제하는 시간을 갖습니다.</p>
+<p>트랙 A가 끝나면 학생의 규칙 파일은 약 10-20개. 그리고 한 가지 메타 인사이트가 자라고 있어요.</p>
+<blockquote>
+<p><strong>“규칙을 만드는 방법은 같다. 검증 방법은 도메인마다 다르다.”</strong></p>
+</blockquote>
+<p>다음 트랙 B(데이터 분석)에서는 <strong>“정답이 없는 영역에서 스스로 기준을 세우는”</strong> 도전이 기다립니다.</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/ai-rule-designer-30h-opus47/chapter04/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">애니메이션 — 움직임까지 명세하기 (차시 3-4)</span> </span> </a> <a href="/ai-rule-designer-30h-opus47/chapter06/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">자유 프로젝트 + 트랙 A 규칙 정리 (차시 7-8)</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>

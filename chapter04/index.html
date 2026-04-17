@@ -1,0 +1,1152 @@
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>애니메이션 — 움직임까지 명세하기 (차시 3-4) | AI 시대의 규칙 설계자 — 30시간 교육과정</title><link rel="canonical" href="https://greatsong.github.io/ai-rule-designer-30h-opus47/chapter04/"/><link rel="sitemap" href="/ai-rule-designer-30h-opus47/sitemap-index.xml"/><script type="module" src="/ai-rule-designer-30h-opus47/mermaid-init.js"></script><script type="module" src="/ai-rule-designer-30h-opus47/toc-toggle.js"></script><link rel="shortcut icon" href="/ai-rule-designer-30h-opus47/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.1"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="애니메이션 — 움직임까지 명세하기 (차시 3-4)"/><meta property="og:type" content="article"/><meta property="og:url" content="https://greatsong.github.io/ai-rule-designer-30h-opus47/chapter04/"/><meta property="og:locale" content="ko"/><meta property="og:description"/><meta property="og:site_name" content="AI 시대의 규칙 설계자 — 30시간 교육과정"/><meta name="twitter:card" content="summary_large_image"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/ai-rule-designer-30h-opus47/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/ai-rule-designer-30h-opus47/_astro/index.DmFJ7yxb.css"><script type="module" src="/ai-rule-designer-30h-opus47/_astro/page.B1D-nYk3.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">콘텐츠로 이동</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/ai-rule-designer-30h-opus47/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> AI 시대의 규칙 설계자 — 30시간 교육과정 </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;검색&#34;}"> <button data-open-modal disabled aria-label="검색" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">검색</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="검색" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> 취소 </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/ai-rule-designer-30h-opus47/_astro/Search.astro_astro_type_script_index_0_lang.CyBO43Vx.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="메인"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="메뉴" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="0vleex6" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 0. 교사 안내</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter00/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">선생님을 위한 안내 — 이 교육과정을 시작하기 전에</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 1. 도입부 — 나만의 봇 만들기</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter01/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI에게 일을 잘 시키려면 — 환경 세팅부터 첫 규칙까지 (차시 1-2)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter02/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">서로의 규칙을 통해 배우기 — 교차 테스트와 갤러리 워크 (차시 3-4)</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 2. 트랙 A — VPython 3D 창작과 시뮬레이션</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter03/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3D 조형 — 내 머릿속 그림을 명세로 바꾸기 (차시 1-2)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter04/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">애니메이션 — 움직임까지 명세하기 (차시 3-4)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter05/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">물리 시뮬레이션 — 이제 수치로 검증한다 (차시 5-6)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ai-rule-designer-30h-opus47/chapter06/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">자유 프로젝트 + 트랙 A 규칙 정리 (차시 7-8)</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/ai-rule-designer-30h-opus47/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/ai-rule-designer-30h-opus47/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#정지된-캐릭터에-생명을-불어넣기--그리고-ai가-또-어떻게-실수하는지" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">“정지된 캐릭터에 생명을 불어넣기 — 그리고 AI가 또 어떻게 실수하는지”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-차시-개요" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📌 차시 개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-장에서-배우는-것" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎯 이 장에서 배우는 것</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-왜-이걸-배우나요" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💡 왜 이걸 배우나요?</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📚 핵심 개념</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-애니메이션--빠른-속도로-반복되는-그림-다시-그리기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1: 애니메이션 = 빠른 속도로 반복되는 ‘그림 다시 그리기’</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-움직임의-두-가지-방식--위치-변경-vs-회전" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2: 움직임의 두 가지 방식 — 위치 변경 vs 회전</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-3-회전축을-정한다는-것의-의미" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 3: 회전축을 정한다는 것의 의미</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-4-동작-명세서--움직임을-숫자로-적는-법" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 4: 동작 명세서 — 움직임을 숫자로 적는 법</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-따라하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔨 따라하기</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#-차시-3-50분-직접-만들기--ai와-비교" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">🕐 차시 3 (50분): 직접 만들기 + AI와 비교</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#-차시-4-50분-구조화된-동작-명세--종합-프로젝트" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">🕐 차시 4 (50분): 구조화된 동작 명세 + 종합 프로젝트</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-자주-하는-실수" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">⚠️ 자주 하는 실수</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-1-rate를-빼먹어서-브라우저가-멈춤" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 1: rate()를 빼먹어서 브라우저가 멈춤</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-2-회전인데-pos를-바꿔서-관통-이동" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 2: 회전인데 .pos를 바꿔서 관통 이동</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-3-회전-중심origin을-빠뜨려서-팔이-원점-기준으로-돈다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 3: 회전 중심(origin)을 빠뜨려서 팔이 원점 기준으로 돈다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-4-속도를-말로-설명해서-ai가-마음대로-정함" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 4: 속도를 말로 설명해서 AI가 마음대로 정함</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-스스로-점검하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✅ 스스로 점검하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-더-해보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🚀 더 해보기</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#초급-부드러운-흔들기-sin-함수" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">초급: 부드러운 흔들기 (sin 함수)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#중급-키보드-제어-애니메이션" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">중급: 키보드 제어 애니메이션</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#상급-걷기-애니메이션-완성하기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">상급: 걷기 애니메이션 완성하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#ai-활용-아이디어" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">AI 활용 아이디어</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-다음-장으로" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔗 다음 장으로</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📝 확인 문제</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#객관식-1" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">객관식 1</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#객관식-2" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">객관식 2</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#객관식-3" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">객관식 3</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#서술형" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">서술형</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-차시를-마치며" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎬 이 차시를 마치며</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#정지된-캐릭터에-생명을-불어넣기--그리고-ai가-또-어떻게-실수하는지" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">“정지된 캐릭터에 생명을 불어넣기 — 그리고 AI가 또 어떻게 실수하는지”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-차시-개요" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📌 차시 개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-장에서-배우는-것" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎯 이 장에서 배우는 것</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-왜-이걸-배우나요" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💡 왜 이걸 배우나요?</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📚 핵심 개념</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-애니메이션--빠른-속도로-반복되는-그림-다시-그리기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1: 애니메이션 = 빠른 속도로 반복되는 ‘그림 다시 그리기’</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-움직임의-두-가지-방식--위치-변경-vs-회전" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2: 움직임의 두 가지 방식 — 위치 변경 vs 회전</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-3-회전축을-정한다는-것의-의미" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 3: 회전축을 정한다는 것의 의미</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-4-동작-명세서--움직임을-숫자로-적는-법" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 4: 동작 명세서 — 움직임을 숫자로 적는 법</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-따라하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔨 따라하기</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#-차시-3-50분-직접-만들기--ai와-비교" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">🕐 차시 3 (50분): 직접 만들기 + AI와 비교</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#-차시-4-50분-구조화된-동작-명세--종합-프로젝트" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">🕐 차시 4 (50분): 구조화된 동작 명세 + 종합 프로젝트</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-자주-하는-실수" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">⚠️ 자주 하는 실수</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-1-rate를-빼먹어서-브라우저가-멈춤" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 1: rate()를 빼먹어서 브라우저가 멈춤</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-2-회전인데-pos를-바꿔서-관통-이동" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 2: 회전인데 .pos를 바꿔서 관통 이동</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-3-회전-중심origin을-빠뜨려서-팔이-원점-기준으로-돈다" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 3: 회전 중심(origin)을 빠뜨려서 팔이 원점 기준으로 돈다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#실수-4-속도를-말로-설명해서-ai가-마음대로-정함" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">실수 4: 속도를 말로 설명해서 AI가 마음대로 정함</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-스스로-점검하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✅ 스스로 점검하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-더-해보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🚀 더 해보기</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#초급-부드러운-흔들기-sin-함수" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">초급: 부드러운 흔들기 (sin 함수)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#중급-키보드-제어-애니메이션" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">중급: 키보드 제어 애니메이션</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#상급-걷기-애니메이션-완성하기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">상급: 걷기 애니메이션 완성하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#ai-활용-아이디어" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">AI 활용 아이디어</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-다음-장으로" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔗 다음 장으로</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📝 확인 문제</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#객관식-1" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">객관식 1</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#객관식-2" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">객관식 2</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#객관식-3" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">객관식 3</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#서술형" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">서술형</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-차시를-마치며" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎬 이 차시를 마치며</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">애니메이션 — 움직임까지 명세하기 (차시 3-4)</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="sl-heading-wrapper level-h2"><h2 id="정지된-캐릭터에-생명을-불어넣기--그리고-ai가-또-어떻게-실수하는지">“정지된 캐릭터에 생명을 불어넣기 — 그리고 AI가 또 어떻게 실수하는지”</h2><a class="sl-anchor-link" href="#정지된-캐릭터에-생명을-불어넣기--그리고-ai가-또-어떻게-실수하는지"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: ““정지된 캐릭터에 생명을 불어넣기 — 그리고 AI가 또 어떻게 실수하는지””</span></a></div>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-차시-개요">📌 차시 개요</h2><a class="sl-anchor-link" href="#-차시-개요"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📌 차시 개요”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody><tr><td>차시</td><td>트랙 A — 3-4/8차시</td></tr><tr><td>주제</td><td>VPython 애니메이션: 움직임을 명세로 바꾸기</td></tr><tr><td>핵심 루프</td><td>직접 움직이기 → AI에게 움직이라고 시키기 → 동작 명세서 쓰기 → 규칙 추가</td></tr><tr><td>학습목표</td><td>학생은 “동작”이라는 모호한 개념을 축·각도·속도·반복으로 구조화하여 AI에게 전달할 수 있고, 애니메이션 관련 규칙을 3-5개 규칙 파일에 추가한다</td></tr><tr><td>규칙 파일</td><td>차시 1-2 후 10-15개 → 이 차시 후 +3-5개 (총 13-20개)</td></tr><tr><td>준비물</td><td>교사: GlowScript 데모 4종(애니메이션), 동작 명세서 템플릿 인쇄물 / 학생: 노트북, 종이, 연필, 차시 1-2에서 만든 캐릭터 코드</td></tr><tr><td>플랫폼</td><td>GlowScript (glowscript.org)</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-이-장에서-배우는-것">🎯 이 장에서 배우는 것</h2><a class="sl-anchor-link" href="#-이-장에서-배우는-것"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🎯 이 장에서 배우는 것”</span></a></div>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 정적 3D 조형물에 <code dir="auto">rate()</code>와 <code dir="auto">while</code> 루프를 활용해 애니메이션을 추가할 수 있다</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code dir="auto">.pos</code> 변경과 <code dir="auto">rotate()</code>로 움직임을 구현할 수 있다</li>
+<li class="task-list-item"><input type="checkbox" disabled> AI가 만든 애니메이션에서 회전축 오류, 관통 이동, 속도 불일치를 식별할 수 있다</li>
+<li class="task-list-item"><input type="checkbox" disabled> “동작 명세서”(축, 각도, 속도, 반복 조건)를 작성하여 AI에게 정밀하게 움직임을 지시할 수 있다</li>
+<li class="task-list-item"><input type="checkbox" disabled> 애니메이션 관련 AI 실수 패턴에서 규칙을 3개 이상 뽑아낼 수 있다</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-왜-이걸-배우나요">💡 왜 이걸 배우나요?</h2><a class="sl-anchor-link" href="#-왜-이걸-배우나요"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “💡 왜 이걸 배우나요?”</span></a></div>
+<p>차시 1-2에서 학생들은 “좌표를 정밀하게 명시하면 AI가 3D 조형을 잘 만들어준다”를 체험했습니다. 그런데 여기에는 <strong>함정</strong>이 있습니다. 정적 조형은 AI가 꽤 잘 해냅니다. 좌표와 크기만 명세해도 결과가 깔끔하게 나옵니다. 학생이 “아, 이제 AI 잘 쓰네!”라고 방심할 수 있는 지점입니다.</p>
+<p><strong>차시 3-4는 이 방심을 깨는 역할</strong>을 합니다. 움직임이 들어가는 순간 AI는 새로운 방식으로 실수하기 시작합니다:</p>
+<ul>
+<li>팔을 흔들어달라고 했더니 <strong>회전축을 잘못 잡아서 팔이 몸통을 뚫고 돌아갑니다</strong></li>
+<li>걷게 해달라고 했더니 <strong>다리가 따로 놀고 몸통만 스르륵 미끄러집니다</strong></li>
+<li>“천천히 움직여줘”라고 했더니 <strong>너무 빨라서 화면이 번쩍입니다</strong></li>
+<li>반복하라고 했더니 <strong>무한 루프에서 탈출 못 하고 브라우저가 멈춥니다</strong></li>
+</ul>
+<p>이 실수들은 학생에게 두 가지를 가르칩니다.</p>
+<p><strong>첫째, “동작”은 “모양”보다 훨씬 복잡한 개념입니다.</strong> 공을 위치 (0, 0, 0)에 놓는 것은 숫자 3개면 끝이지만, “공이 왔다 갔다 한다”는 <strong>어느 축으로, 얼마나, 얼마나 빨리, 언제까지, 어떤 패턴으로</strong> 를 모두 정해야 합니다.</p>
+<p><strong>둘째, 모호한 요청의 대가가 더 커집니다.</strong> 정적 조형에서 “대충”의 결과는 “못생긴 로봇”이지만, 애니메이션에서 “대충”의 결과는 “팔이 몸통을 관통하며 돌아가는 공포 영상”입니다. 학생이 Fowler의 “생성이 쉬워지면 판단이 엄격해져야 한다”를 살갗으로 느끼는 지점입니다.</p>
+<blockquote>
+<p>💬 <strong>교사를 위한 한 문장:</strong>
+“차시 1-2가 ‘정밀한 명세의 달콤함’을 맛보게 했다면, 차시 3-4는 ‘명세의 차원이 올라가는 순간 AI가 또 무너진다’를 보여주는 차시입니다.”</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-핵심-개념">📚 핵심 개념</h2><a class="sl-anchor-link" href="#-핵심-개념"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📚 핵심 개념”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-1-애니메이션--빠른-속도로-반복되는-그림-다시-그리기">개념 1: 애니메이션 = 빠른 속도로 반복되는 ‘그림 다시 그리기’</h3><a class="sl-anchor-link" href="#개념-1-애니메이션--빠른-속도로-반복되는-그림-다시-그리기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 1: 애니메이션 = 빠른 속도로 반복되는 ‘그림 다시 그리기’”</span></a></div>
+<div class="sl-heading-wrapper level-h4"><h4 id="비유-플립북">비유: 플립북</h4><a class="sl-anchor-link" href="#비유-플립북"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “비유: 플립북”</span></a></div>
+<p>어릴 때 한 번쯤 해본 플립북 놀이를 떠올려 보세요. 종이 귀퉁이에 조금씩 다른 그림을 그리고, 빠르게 넘기면 움직이는 것처럼 보입니다. 컴퓨터 애니메이션도 똑같습니다. <strong>매 순간 화면을 살짝 바꿔서 다시 그리는 것</strong>을 빠르게 반복하면, 우리 눈에는 움직임으로 보입니다.</p>
+<div class="svg-diagram">
+<svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px">
+  <defs>
+    <marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"></path>
+    </marker>
+  </defs>
+  <rect x="10" y="50" width="80" height="80" rx="4" fill="#2196F3" opacity="0.15" stroke="#2196F3"></rect>
+  <circle cx="30" cy="110" r="8" fill="#1565C0"></circle>
+  <text x="50" y="145" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">프레임 1</text>
+  <line x1="95" y1="90" x2="115" y2="90" stroke="#666" stroke-width="2" marker-end="url(#arr1)"></line>
+  <rect x="120" y="50" width="80" height="80" rx="4" fill="#2196F3" opacity="0.15" stroke="#2196F3"></rect>
+  <circle cx="150" cy="100" r="8" fill="#1565C0"></circle>
+  <text x="160" y="145" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">프레임 2</text>
+  <line x1="205" y1="90" x2="225" y2="90" stroke="#666" stroke-width="2" marker-end="url(#arr1)"></line>
+  <rect x="230" y="50" width="80" height="80" rx="4" fill="#2196F3" opacity="0.15" stroke="#2196F3"></rect>
+  <circle cx="270" cy="90" r="8" fill="#1565C0"></circle>
+  <text x="270" y="145" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">프레임 3</text>
+  <line x1="315" y1="90" x2="335" y2="90" stroke="#666" stroke-width="2" marker-end="url(#arr1)"></line>
+  <rect x="340" y="50" width="80" height="80" rx="4" fill="#2196F3" opacity="0.15" stroke="#2196F3"></rect>
+  <circle cx="390" cy="80" r="8" fill="#1565C0"></circle>
+  <text x="380" y="145" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">프레임 4</text>
+</svg><p><text x="250" y="30" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#1565C0" font-weight="bold">공이 위로 올라간다 (매 프레임마다 y를 조금씩 증가)</text>
+<text x="250" y="170" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#666" font-style="italic">초당 30-60번 반복하면 → 부드러운 움직임으로 보임</text>
+</p>
+</div>
+<div class="sl-heading-wrapper level-h4"><h4 id="정확한-정의">정확한 정의</h4><a class="sl-anchor-link" href="#정확한-정의"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “정확한 정의”</span></a></div>
+<p>VPython 애니메이션은 세 가지 요소로 이루어집니다:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>요소</th><th>하는 일</th><th>VPython 코드</th></tr></thead><tbody><tr><td><strong>반복 루프</strong></td><td>계속해서 화면을 다시 그린다</td><td><code dir="auto">while True:</code></td></tr><tr><td><strong>속도 조절</strong></td><td>초당 몇 번 그릴지 정한다</td><td><code dir="auto">rate(30)</code> — 초당 30번</td></tr><tr><td><strong>상태 변경</strong></td><td>매 프레임마다 도형의 위치/각도를 바꾼다</td><td><code dir="auto">object.pos.y += 0.01</code> 또는 <code dir="auto">object.rotate(...)</code></td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h4"><h4 id="가장-단순한-예시-위아래로-움직이는-공">가장 단순한 예시: 위아래로 움직이는 공</h4><a class="sl-anchor-link" href="#가장-단순한-예시-위아래로-움직이는-공"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “가장 단순한 예시: 위아래로 움직이는 공”</span></a></div>
+<div class="expressive-code"><link rel="stylesheet" href="/ai-rule-designer-30h-opus47/_astro/ec.v4551.css"><script type="module" src="/ai-rule-designer-30h-opus47/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">GlowScript </span><span style="--0:#F78C6C;--1:#AA0982">3.2</span><span style="--0:#D6DEEB;--1:#403F53"> VPython</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">ball </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">sphere</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">pos</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">radius</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.5</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">color</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#82AAFF;--1:#3B61B0">color.red</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 애니메이션 루프</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">t </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)                          </span><span style="--0:#919F9F;--1:#5F636F"># 초당 60번 반복</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">ball.pos.y </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">sin</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">t</span><span style="--0:#D6DEEB;--1:#403F53">)               </span><span style="--0:#919F9F;--1:#5F636F"># y 좌표를 sin 값으로 바꾼다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">t </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> t </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D6DEEB;--1:#403F53">                      </span><span style="--0:#919F9F;--1:#5F636F"># 시간을 조금씩 증가</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="GlowScript 3.2 VPythonball = sphere(pos=vector(0, 0, 0), radius=0.5, color=color.red)# 애니메이션 루프t = 0while True:    rate(60)                          # 초당 60번 반복    ball.pos.y = sin(t)               # y 좌표를 sin 값으로 바꾼다    t = t + 0.05                      # 시간을 조금씩 증가"><div></div></button></div></figure></div>
+<p>이 코드가 하는 일을 한 줄씩 풀어보면:</p>
+<ol>
+<li><code dir="auto">rate(60)</code> → “초당 60번 아래 코드를 실행해줘, 너무 빠르면 기다리고”</li>
+<li><code dir="auto">ball.pos.y = sin(t)</code> → “공의 y 좌표를 sin 값으로 바꿔” (sin은 -1과 1 사이를 오가니까 공이 위아래로 움직임)</li>
+<li><code dir="auto">t = t + 0.05</code> → “다음 프레임에서는 조금 더 진행된 시간값을 쓸 수 있게”</li>
+</ol>
+<blockquote>
+<p>💡 <strong>sin/cos을 몰라도 됩니다.</strong> 학생에게는 “-1과 1 사이를 부드럽게 왔다 갔다 하는 숫자를 만들어주는 함수”라고만 설명하세요. 각도나 라디안을 배울 필요 없습니다.</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-2-움직임의-두-가지-방식--위치-변경-vs-회전">개념 2: 움직임의 두 가지 방식 — 위치 변경 vs 회전</h3><a class="sl-anchor-link" href="#개념-2-움직임의-두-가지-방식--위치-변경-vs-회전"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 2: 움직임의 두 가지 방식 — 위치 변경 vs 회전”</span></a></div>
+<p>움직임에는 크게 두 종류가 있습니다. 이 둘을 구분하는 것이 애니메이션 명세의 출발점입니다.</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="방식-a-위치-변경-pos-바꾸기">방식 A: 위치 변경 (<code dir="auto">.pos</code> 바꾸기)</h4><a class="sl-anchor-link" href="#방식-a-위치-변경-pos-바꾸기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “방식 A: 위치 변경 (.pos 바꾸기)”</span></a></div>
+<p>도형의 <strong>위치</strong>를 바꾸는 것입니다. 공이 날아가거나, 캐릭터가 걸어가거나, 엘리베이터가 올라갈 때 사용합니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 공이 오른쪽으로 계속 이동</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.02</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="# 공이 오른쪽으로 계속 이동while True:    rate(60)    ball.pos.x = ball.pos.x + 0.02"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h4"><h4 id="방식-b-회전-rotate-호출하기">방식 B: 회전 (<code dir="auto">rotate()</code> 호출하기)</h4><a class="sl-anchor-link" href="#방식-b-회전-rotate-호출하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “방식 B: 회전 (rotate() 호출하기)”</span></a></div>
+<p>도형이 <strong>제자리에서 돌거나</strong>, <strong>어떤 축을 중심으로 흔들릴 때</strong> 사용합니다. 풍차가 돌거나, 팔이 흔들리거나, 지구가 자전할 때입니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 풍차가 제자리에서 계속 돌기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">windmill.</span><span style="--0:#B2CCD6;--1:#096E72">rotate</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">angle</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">axis</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="# 풍차가 제자리에서 계속 돌기while True:    rate(60)    windmill.rotate(angle=0.05, axis=vector(0, 0, 1))"><div></div></button></div></figure></div>
+<p><code dir="auto">rotate()</code>의 세 가지 매개변수를 꼭 기억해야 합니다:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>매개변수</th><th>뜻</th><th>예시</th></tr></thead><tbody><tr><td><code dir="auto">angle</code></td><td>이번 프레임에 몇 라디안 돌릴지</td><td><code dir="auto">0.05</code> (작을수록 천천히)</td></tr><tr><td><code dir="auto">axis</code></td><td>어느 축을 중심으로 돌지</td><td><code dir="auto">vector(0, 1, 0)</code> → y축(세로축)</td></tr><tr><td><code dir="auto">origin</code></td><td>어느 지점을 축의 중심으로 할지 (생략 가능)</td><td><code dir="auto">vector(0, 0, 0)</code></td></tr></tbody></table>
+<div class="svg-diagram">
+<svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px">
+  <rect x="10" y="10" width="230" height="200" rx="8" fill="#4CAF50" opacity="0.1" stroke="#4CAF50"></rect>
+  <text x="125" y="35" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#2E7D32" font-weight="bold">방식 A: 위치 변경 (.pos)</text>
+  <circle cx="50" cy="130" r="15" fill="#F44336" opacity="0.3" stroke="#F44336"></circle>
+  <circle cx="100" cy="130" r="15" fill="#F44336" opacity="0.6" stroke="#F44336"></circle>
+  <circle cx="150" cy="130" r="15" fill="#F44336" opacity="0.9" stroke="#F44336"></circle>
+  <circle cx="200" cy="130" r="15" fill="#F44336" stroke="#F44336"></circle>
+  <line x1="30" y1="170" x2="220" y2="170" stroke="#666" stroke-width="1" marker-end="url(#arr2)"></line>
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"></path>
+    </marker>
+  </defs>
+  <text x="125" y="195" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">도형 전체가 이동</text>
+  <rect x="260" y="10" width="230" height="200" rx="8" fill="#FF9800" opacity="0.1" stroke="#FF9800"></rect>
+  <text x="375" y="35" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#E65100" font-weight="bold">방식 B: 회전 (rotate)</text>
+  <circle cx="375" cy="130" r="4" fill="#333"></circle>
+  <line x1="375" y1="130" x2="375" y2="70" stroke="#9C27B0" stroke-width="3" stroke-dasharray="3 3"></line>
+  <text x="385" y="80" font-size="10" font-family="sans-serif" fill="#9C27B0">회전축</text>
+  <rect x="345" y="125" width="60" height="12" fill="#FF9800" opacity="0.9" stroke="#FF9800"></rect>
+  <rect x="350" y="100" width="60" height="12" fill="#FF9800" opacity="0.5" stroke="#FF9800" transform="rotate(30 375 130)"></rect>
+  <rect x="345" y="75" width="60" height="12" fill="#FF9800" opacity="0.3" stroke="#FF9800" transform="rotate(60 375 130)"></rect>
+  <text x="375" y="195" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">축을 중심으로 회전</text>
+</svg>
+</div>
+<div class="sl-heading-wrapper level-h4"><h4 id="왜-이-구분이-중요한가">왜 이 구분이 중요한가?</h4><a class="sl-anchor-link" href="#왜-이-구분이-중요한가"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “왜 이 구분이 중요한가?”</span></a></div>
+<p>학생이 AI에게 “팔을 흔들어줘”라고 하면, AI는 둘 중 뭘 해야 할지 모릅니다. 그래서 엉뚱하게:</p>
+<ul>
+<li>팔의 <code dir="auto">.pos</code>를 좌우로 움직여서 → <strong>팔이 몸에서 떨어져 허공을 왔다 갔다 합니다</strong></li>
+<li>팔을 잘못된 축으로 회전시켜서 → <strong>팔이 몸통을 뚫고 뒤로 돌아갑니다</strong></li>
+</ul>
+<p>“흔들기 = 어깨(특정 지점)를 중심으로, 특정 축으로, 특정 각도 범위 내에서 회전”이라는 걸 학생이 명시해야 합니다. 이것이 이번 차시의 핵심 학습입니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-3-회전축을-정한다는-것의-의미">개념 3: 회전축을 정한다는 것의 의미</h3><a class="sl-anchor-link" href="#개념-3-회전축을-정한다는-것의-의미"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 3: 회전축을 정한다는 것의 의미”</span></a></div>
+<p>학생이 가장 많이 헷갈리는 부분입니다. “어느 축으로 돈다”는 게 도대체 뭔지 감이 잘 안 옵니다. 친근한 비유를 써봅시다.</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="비유-꼬치구이">비유: 꼬치구이</h4><a class="sl-anchor-link" href="#비유-꼬치구이"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “비유: 꼬치구이”</span></a></div>
+<p>꼬치구이를 떠올려 보세요. 꼬챙이를 꽂고 돌리면, 고기는 꼬챙이를 <strong>축</strong>으로 삼아 빙글빙글 돕니다. 꼬챙이 방향이 바뀌면 고기가 도는 모양도 바뀝니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>꼬챙이 방향</th><th>회전축</th><th>고기의 움직임</th></tr></thead><tbody><tr><td>수직으로 (↕️)</td><td>y축</td><td>제자리에서 빙글빙글 (팽이처럼)</td></tr><tr><td>수평으로 (↔️)</td><td>x축</td><td>앞뒤로 뒤집어짐</td></tr><tr><td>내 쪽으로 (⊙)</td><td>z축</td><td>옆으로 굴러감</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h4"><h4 id="vpython에서">VPython에서</h4><a class="sl-anchor-link" href="#vpython에서"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “VPython에서”</span></a></div>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 팽이처럼 돌기 (y축 회전)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">object</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#B2CCD6;--1:#096E72">rotate</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">angle</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">axis</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 앞뒤로 뒤집히기 (x축 회전)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">object</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#B2CCD6;--1:#096E72">rotate</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">angle</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">axis</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 옆으로 구르기 (z축 회전)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">object</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#B2CCD6;--1:#096E72">rotate</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">angle</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">axis</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="# 팽이처럼 돌기 (y축 회전)object.rotate(angle=0.05, axis=vector(0, 1, 0))# 앞뒤로 뒤집히기 (x축 회전)object.rotate(angle=0.05, axis=vector(1, 0, 0))# 옆으로 구르기 (z축 회전)object.rotate(angle=0.05, axis=vector(0, 0, 1))"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h4"><h4 id="ai가-가장-자주-하는-실수">AI가 가장 자주 하는 실수</h4><a class="sl-anchor-link" href="#ai가-가장-자주-하는-실수"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “AI가 가장 자주 하는 실수”</span></a></div>
+<p>“팔을 흔들어줘”라고 하면, AI는 흔히 <strong>x축이나 z축을 기본값</strong>으로 고릅니다. 그런데 사람 몸의 팔을 흔드는 자연스러운 동작은 <strong>어깨를 기준으로 앞뒤</strong> (주로 x축 또는 z축, 팔 방향에 따라 다름)입니다. AI는 이 중 어느 축이 “앞뒤”인지 캐릭터의 방향을 보지 않고 대충 고릅니다. 그래서 팔이 옆으로 흔들리거나, 심지어 몸통을 관통합니다.</p>
+<blockquote>
+<p>💡 <strong>핵심 원리:</strong> “몸통의 어떤 축이 앞뒤인가?”를 학생이 먼저 정해야, 팔이 그 축 주위로 흔들릴지 정할 수 있습니다. 이 “내 캐릭터의 좌표계를 내가 안다”는 것이 동작 명세의 출발점입니다.</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-4-동작-명세서--움직임을-숫자로-적는-법">개념 4: 동작 명세서 — 움직임을 숫자로 적는 법</h3><a class="sl-anchor-link" href="#개념-4-동작-명세서--움직임을-숫자로-적는-법"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 4: 동작 명세서 — 움직임을 숫자로 적는 법”</span></a></div>
+<p>차시 1-2에서 학생은 “좌표 명세”를 배웠습니다. 이번 차시에서는 거기에 <strong>시간</strong>과 <strong>반복</strong>이 추가됩니다.</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="정적-명세서-vs-동작-명세서">정적 명세서 vs 동작 명세서</h4><a class="sl-anchor-link" href="#정적-명세서-vs-동작-명세서"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “정적 명세서 vs 동작 명세서”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>항목</th><th>정적 명세 (차시 1-2)</th><th>동작 명세 (차시 3-4)</th></tr></thead><tbody><tr><td>누구</td><td><code dir="auto">body</code> (몸통)</td><td><code dir="auto">left_arm</code> (왼팔)</td></tr><tr><td>어디</td><td><code dir="auto">pos=(0, 0, 0)</code></td><td>— (이미 정해짐)</td></tr><tr><td>크기</td><td><code dir="auto">size=(1, 2, 1)</code></td><td>— (이미 정해짐)</td></tr><tr><td>색상</td><td><code dir="auto">color=red</code></td><td>— (이미 정해짐)</td></tr><tr><td><strong>어떻게 움직이나</strong></td><td>—</td><td><strong>축: y축 기준</strong></td></tr><tr><td><strong>얼마나</strong></td><td>—</td><td><strong>각도: -30°~+30°</strong></td></tr><tr><td><strong>얼마나 빠르게</strong></td><td>—</td><td><strong>주기: 0.5초</strong></td></tr><tr><td><strong>언제까지</strong></td><td>—</td><td><strong>무한 반복</strong></td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h4"><h4 id="동작-명세서-템플릿">동작 명세서 템플릿</h4><a class="sl-anchor-link" href="#동작-명세서-템플릿"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “동작 명세서 템플릿”</span></a></div>
+<pre class="ef-ascii-box"><code>┌───────────────────────────────────────────────────────┐
+│              동작 명세서                              │
+│  캐릭터: ________  동작 이름: ________                │
+│                                                       │
+│  [대상]  어떤 도형을 움직이는가?                      │
+│  → ______________________________________             │
+│                                                       │
+│  [방식]  위치 변경? 회전?                             │
+│  □ 위치 변경 (.pos)   □ 회전 (rotate)               │
+│                                                       │
+│  [축]   어느 축을 쓰는가? (회전일 때 필수)            │
+│  □ x축   □ y축   □ z축                             │
+│                                                       │
+│  [중심]  회전의 중심 지점은? (회전일 때)              │
+│  → pos = ( ___ , ___ , ___ )                          │
+│                                                       │
+│  [범위] 얼마나 움직이나?                              │
+│  → 각도: ___° ~ ___°  또는  거리: ___ ~ ___           │
+│                                                       │
+│  [속도] 얼마나 빠르게?                                │
+│  → 한 사이클: ___초  또는  rate(___)                  │
+│                                                       │
+│  [반복] 언제까지?                                     │
+│  □ 무한 반복  □ N번 반복  □ 조건 만족 시 종료      │
+└───────────────────────────────────────────────────────┘</code></pre>
+<p>이 6가지 칸을 다 채우면, AI가 더 이상 “해석할 여지”가 없습니다. 결과가 극적으로 좋아집니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-따라하기">🔨 따라하기</h2><a class="sl-anchor-link" href="#-따라하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🔨 따라하기”</span></a></div>
+<p>이제 실습으로 들어갑니다. 2개 차시를 한 번에 설계합니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="-차시-3-50분-직접-만들기--ai와-비교">🕐 차시 3 (50분): 직접 만들기 + AI와 비교</h3><a class="sl-anchor-link" href="#-차시-3-50분-직접-만들기--ai와-비교"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🕐 차시 3 (50분): 직접 만들기 + AI와 비교”</span></a></div>
+<div class="sl-heading-wrapper level-h4"><h4 id="00-05분-복습--규칙-파일-어디까지-왔나">00-05분: 복습 — “규칙 파일 어디까지 왔나?”</h4><a class="sl-anchor-link" href="#00-05분-복습--규칙-파일-어디까지-왔나"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “00-05분: 복습 — “규칙 파일 어디까지 왔나?””</span></a></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“지난 시간에 여러분이 만든 캐릭터들, 참 잘 나왔죠? 규칙 파일도 몇 개 자라났고요.
+각자 규칙 파일 열어보세요. 지금 몇 개예요?”</p>
+</blockquote>
+<p><strong>예상 반응:</strong></p>
+<ul>
+<li>“8개요” / “12개요” / “저는 6개밖에 못 썼어요”</li>
+</ul>
+<blockquote>
+<p>“좋아요. 오늘은 거기에 새로운 섹션을 추가할 거예요.
+지금까지는 <strong>정지된</strong> 캐릭터였죠? 오늘은 <strong>움직이게</strong> 만들 거예요.
+그런데 움직임을 다루면서, AI가 또 새로운 방식으로 실수를 시작합니다.
+그 실수에서 새 규칙이 또 3-5개 생길 거예요. 기대하세요.”</p>
+</blockquote>
+<p><strong>교사 유의사항:</strong></p>
+<ul>
+<li>규칙 파일을 열지 않은 학생: “GitHub에서 my_rules.md 열어보세요”</li>
+<li>규칙이 너무 적은 학생(3개 이하): 지금은 지적하지 말고, 이번 차시에서 새 규칙을 쓸 때 이전 것도 보강하도록 유도</li>
+<li>이 5분은 짧게 — 바로 본론으로 들어갑니다</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="05-25분-직접-코딩--공-하나를-움직여-보자">05-25분: 직접 코딩 — “공 하나를 움직여 보자”</h4><a class="sl-anchor-link" href="#05-25분-직접-코딩--공-하나를-움직여-보자"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “05-25분: 직접 코딩 — “공 하나를 움직여 보자””</span></a></div>
+<p>이 활동의 의도는 <strong>“AI 없이 움직임을 직접 만들어보는 경험”</strong>입니다. 이 경험이 있어야 AI 결과를 판정할 기준선이 생깁니다.</p>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트-1">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트-1"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“자, GlowScript에 새 프로그램을 만드세요. 아주 단순한 걸로 시작할 거예요.”</p>
+</blockquote>
+<p>칠판(또는 화면)에 단계별로 코드를 올리면서 학생이 따라 치게 합니다.</p>
+<p><strong>1단계: 공 하나 만들기 (복습)</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">GlowScript </span><span style="--0:#F78C6C;--1:#AA0982">3.2</span><span style="--0:#D6DEEB;--1:#403F53"> VPython</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">ball </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">sphere</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">pos</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">radius</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.5</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">color</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#82AAFF;--1:#3B61B0">color.red</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="GlowScript 3.2 VPythonball = sphere(pos=vector(0, 0, 0), radius=0.5, color=color.red)"><div></div></button></div></figure></div>
+<blockquote>
+<p>“실행해보세요. 빨간 공이 하나 나왔죠? 이건 지난 시간에 했던 거예요.”</p>
+</blockquote>
+<p><strong>2단계: 움직이는 루프 추가</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">GlowScript </span><span style="--0:#F78C6C;--1:#AA0982">3.2</span><span style="--0:#D6DEEB;--1:#403F53"> VPython</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">ball </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">sphere</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">pos</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">radius</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.5</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">color</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#82AAFF;--1:#3B61B0">color.red</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 애니메이션 루프</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.02</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="GlowScript 3.2 VPythonball = sphere(pos=vector(0, 0, 0), radius=0.5, color=color.red)# 애니메이션 루프while True:    rate(60)    ball.pos.x = ball.pos.x + 0.02"><div></div></button></div></figure></div>
+<blockquote>
+<p>“<code dir="auto">while True:</code> 아래에 들여쓰기 꼭 하세요. 공백 4칸.
+실행해보세요. 뭐가 보이나요?”</p>
+</blockquote>
+<p><strong>예상 반응:</strong></p>
+<ul>
+<li>“공이 오른쪽으로 가요!” / “엇 움직였다!” / “너무 빨라요” / “멈추려면 어떻게 해요?”</li>
+</ul>
+<blockquote>
+<p>“멈추려면 위쪽의 ‘Stop’ 버튼을 누르세요. 또는 새로고침.</p>
+<p>자, 지금 세 줄이 애니메이션의 전부예요.
+<code dir="auto">while True</code> → 계속 반복
+<code dir="auto">rate(60)</code> → 초당 60번
+<code dir="auto">ball.pos.x = ball.pos.x + 0.02</code> → 매번 x를 조금씩 증가</p>
+<p>여기서 숫자들을 바꿔보세요. 0.02를 0.1로 바꾸면? 0.001로 바꾸면? rate(10)으로 바꾸면?”</p>
+</blockquote>
+<p><strong>예상 반응:</strong></p>
+<ul>
+<li>“0.1로 하니까 엄청 빨라요!” / “rate(10)은 끊어져 보여요”</li>
+</ul>
+<blockquote>
+<p>“바로 그거예요. <strong>속도는 두 가지로 조절</strong>할 수 있어요:
+① 매 프레임 얼마나 움직일지 (0.02 같은 숫자)
+② 초당 몇 프레임을 그릴지 (rate 숫자)</p>
+<p>보통 rate는 30-60으로 놓고, 움직이는 양을 조절해요.”</p>
+</blockquote>
+<p><strong>3단계: 왔다 갔다 하기 (바운스)</strong></p>
+<blockquote>
+<p>“한쪽으로만 계속 가면 화면 밖으로 나가죠. 왔다 갔다 하게 해봅시다.
+속도를 변수로 만들고, 경계에 닿으면 방향을 바꾸면 돼요.”</p>
+</blockquote>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">GlowScript </span><span style="--0:#F78C6C;--1:#AA0982">3.2</span><span style="--0:#D6DEEB;--1:#403F53"> VPython</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">ball </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">sphere</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">pos</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">radius</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.5</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#D7DBE0;--1:#403F53">color</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#82AAFF;--1:#3B61B0">color.red</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">velocity </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#919F9F;--1:#5F636F"># 속도 (양수면 오른쪽, 음수면 왼쪽)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> velocity</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F"># 경계에 닿으면 방향 전환</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">if</span><span style="--0:#D6DEEB;--1:#403F53"> ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">></span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">velocity </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">-</span><span style="--0:#F78C6C;--1:#AA0982">0.05</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">if</span><span style="--0:#D6DEEB;--1:#403F53"> ball.pos.x </span><span style="--0:#C792EA;--1:#8844AE">&#x3C;</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">-</span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">velocity </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.05</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="GlowScript 3.2 VPythonball = sphere(pos=vector(0, 0, 0), radius=0.5, color=color.red)velocity = 0.05  # 속도 (양수면 오른쪽, 음수면 왼쪽)while True:    rate(60)    ball.pos.x = ball.pos.x + velocity    # 경계에 닿으면 방향 전환    if ball.pos.x > 3:        velocity = -0.05    if ball.pos.x < -3:        velocity = 0.05"><div></div></button></div></figure></div>
+<blockquote>
+<p>“실행해보세요. 공이 왔다 갔다 하죠?</p>
+<p>이게 <strong>바운스(반사)</strong> 의 기본 원리예요.
+경계에 닿으면 velocity의 부호를 뒤집는 거죠. +에서 -로, -에서 +로.”</p>
+</blockquote>
+<div class="code-result">
+<strong>실행 결과:</strong> 빨간 공이 x=-3과 x=3 사이를 왔다 갔다 함. 초당 60프레임으로 부드럽게 움직임.
+</div>
+<p><strong>4단계: 내 캐릭터에 적용 — 전체 캐릭터를 움직이기</strong></p>
+<blockquote>
+<p>“자, 이제 <strong>여러분이 지난 시간에 만든 캐릭터</strong>를 불러오세요.
+복사해서 이 프로그램 위에 붙여넣으세요. 그리고 캐릭터 전체를 왔다 갔다 움직여볼 거예요.</p>
+<p>그런데 문제가 있어요. 캐릭터는 도형이 여러 개잖아요? 하나씩 다 움직여야 해요.
+또는, 모든 도형을 <strong>하나의 그룹</strong>으로 묶어야 해요.”</p>
+</blockquote>
+<p>VPython에서는 <code dir="auto">compound</code>를 쓸 수 있지만, 초보에게는 복잡합니다. 간단한 방법을 알려줍니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 예시: 눈사람 전체를 움직이기 (도형마다 .pos.x를 같이 바꿈)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">dx </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.03</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">body.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> body.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> dx</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">chest.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> chest.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> dx</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">head.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> head.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> dx</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">nose.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> nose.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> dx</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">left_eye.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> left_eye.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> dx</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">right_eye.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> right_eye.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> dx</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="# 예시: 눈사람 전체를 움직이기 (도형마다 .pos.x를 같이 바꿈)while True:    rate(60)    dx = 0.03    body.pos.x = body.pos.x + dx    chest.pos.x = chest.pos.x + dx    head.pos.x = head.pos.x + dx    nose.pos.x = nose.pos.x + dx    left_eye.pos.x = left_eye.pos.x + dx    right_eye.pos.x = right_eye.pos.x + dx"><div></div></button></div></figure></div>
+<blockquote>
+<p>“좀 지루한 작업이죠? 모든 도형을 하나하나 적어야 해요.
+이게 바로 <strong>코드의 엄격함</strong>이에요. 하나라도 빠뜨리면 그 도형만 안 움직여요.
+한번 해보세요. 도형 하나 빠뜨리면 어떻게 되는지.”</p>
+</blockquote>
+<p><strong>예상 반응:</strong></p>
+<ul>
+<li>“왼쪽 눈을 안 적었더니 눈만 제자리에 있어요!” / “귀신같아요 ㅋㅋ”</li>
+<li>“너무 오래 걸려요, 다 적기가”</li>
+</ul>
+<blockquote>
+<p>“맞아요. 그래서 나중엔 <code dir="auto">compound</code>라는 걸 써서 묶기도 해요.
+오늘은 이 정도만 하고, 핵심만 기억하세요:</p>
+<p><strong>‘움직임을 직접 코딩하면, 각 도형의 pos를 하나하나 업데이트해야 한다.’</strong></p>
+<p>이게 왜 중요할까요? 잠시 후에 AI에게 시킬 텐데, 이걸 모르면 <strong>AI가 뭘 빠뜨렸는지</strong>를 못 찾아요.”</p>
+</blockquote>
+<p><strong>교사 유의사항:</strong></p>
+<ul>
+<li>이 단계에서 학생이 완벽하게 구현하지 못해도 괜찮습니다. <strong>“도형마다 pos를 업데이트해야 한다는 것을 알았다”</strong>만 체감되면 됩니다.</li>
+<li>복잡한 캐릭터(크리퍼 9개, 펭귄 7개)를 고른 학생은 시간이 더 걸립니다. “몸통만 움직여도 괜찮아요, 나머지는 제자리에 있으면 돼요”로 절충 가능</li>
+<li><code dir="auto">compound</code>를 묻는 학생: “있어요! 나중에 자유롭게 찾아보세요. 오늘은 기본 구조만 이해하면 돼요.”</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="25-40분-ai에게-같은-것을-시키기--팔을-흔들어줘">25-40분: AI에게 같은 것을 시키기 — “팔을 흔들어줘”</h4><a class="sl-anchor-link" href="#25-40분-ai에게-같은-것을-시키기--팔을-흔들어줘"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “25-40분: AI에게 같은 것을 시키기 — “팔을 흔들어줘””</span></a></div>
+<p>이 활동이 이 차시의 <strong>클라이맥스</strong>입니다.</p>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트-2">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트-2"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“자, 이제 AI에게 시켜볼 거예요.
+그런데 이번에는 <strong>더 어려운 걸 시킬 거예요.</strong> 왔다 갔다가 아니라, <strong>팔 흔들기</strong>예요.</p>
+<p>팔 흔들기는 왔다 갔다보다 훨씬 복잡해요. 왜일까요?”</p>
+</blockquote>
+<p><strong>예상 반응:</strong></p>
+<ul>
+<li>“팔은 몸에 붙어 있어서?” / “돌아야 해서요?”</li>
+</ul>
+<blockquote>
+<p>“맞아요. 팔은 <strong>몸에서 떨어져서 왔다 갔다 하면 안 돼요.</strong> 어깨를 중심으로 <strong>회전</strong>해야 해요.
+그리고 어느 방향으로 돌아야 자연스러운지도 정해야 하고요.</p>
+<p>AI에게 <strong>일부러 대충</strong> 시켜볼게요. 이렇게요:”</p>
+</blockquote>
+<p><strong>라운드 1: 모호한 요청</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">내가 지난 시간에 만든 이 캐릭터에 팔 흔드는 애니메이션을 추가해줘.</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[여기에 자신의 캐릭터 코드 전체 붙여넣기]</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="내가 지난 시간에 만든 이 캐릭터에 팔 흔드는 애니메이션을 추가해줘.[여기에 자신의 캐릭터 코드 전체 붙여넣기]"><div></div></button></div></figure></div>
+<blockquote>
+<p>“잠깐, 어떤 캐릭터에는 팔이 없죠? 눈사람, 커비, 펭귄에는 팔이 없어요.
+그런 친구들은 다른 걸로 바꿔요:“</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>캐릭터</th><th>대체 애니메이션 요청</th></tr></thead><tbody><tr><td>커비</td><td>”발을 번갈아 위아래로 움직이게 해줘”</td></tr><tr><td>눈사람</td><td>”코가 위아래로 떨려주게 해줘”</td></tr><tr><td>크리퍼</td><td>”앞발 두 개를 번갈아 흔들어줘”</td></tr><tr><td>펭귄</td><td>”고개를 좌우로 돌리게 해줘”</td></tr></tbody></table>
+<blockquote>
+<p>“여러분 캐릭터에 맞게 AI에게 한 문장으로 대충 시켜보세요.
+그리고 결과를 돌려보세요. <strong>마우스로 3D 화면을 회전</strong>해서 여러 각도로 보세요.”</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h5"><h5 id="예상-ai-실패-패턴--이번-차시의-핵심">예상 AI 실패 패턴 — 이번 차시의 핵심</h5><a class="sl-anchor-link" href="#예상-ai-실패-패턴--이번-차시의-핵심"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “예상 AI 실패 패턴 — 이번 차시의 핵심”</span></a></div>
+<p>AI가 모호한 요청을 받았을 때 자주 하는 실수를 미리 알아둬야 합니다. 선생님이 학생을 돌아다니면서 “이거 발견했어요?”라고 짚어줄 수 있어야 해요.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>AI 실수</th><th>학생이 발견하는 증상</th><th>설명</th></tr></thead><tbody><tr><td><strong>회전축 잘못 선택</strong></td><td>”팔이 몸통을 뚫고 뒤로 돌아가요”</td><td>x/y/z 중 엉뚱한 축 사용</td></tr><tr><td><strong>회전 중심을 원점으로 둠</strong></td><td>”팔이 몸통 한가운데서 빙빙 돌아요”</td><td><code dir="auto">origin</code> 없이 <code dir="auto">rotate</code> 호출 → 원점 기준 회전</td></tr><tr><td><strong>관통 이동</strong></td><td>”팔이 몸통 안을 관통해서 왔다 갔다 해요”</td><td><code dir="auto">.pos</code> 변경으로 흔들기 구현 (회전이 아닌)</td></tr><tr><td><strong>속도 비현실적</strong></td><td>”너무 빨라서 팔이 안 보여요” / “너무 느려서 움직이는지 모르겠어요”</td><td>rate와 각도 증분의 조합이 극단적</td></tr><tr><td><strong>무한 회전</strong></td><td>”팔이 멈추지 않고 계속 돌아가요”</td><td>범위 제한 없이 한 방향으로 계속 회전</td></tr><tr><td><strong>반복 조건 누락</strong></td><td>”한 번만 흔들고 멈춰요”</td><td>while 루프 없이 한 번만 실행</td></tr><tr><td><strong>한쪽만 움직임</strong></td><td>”왼팔만 흔들리고 오른팔은 가만히 있어요"</td><td>"팔”을 단수로 해석</td></tr><tr><td><strong>프로그램 멈춤</strong></td><td>”브라우저가 멈췄어요!”</td><td><code dir="auto">rate()</code> 없이 무한 루프 → 너무 빨라 브라우저 과부하</td></tr></tbody></table>
+<p><strong>선생님 활동 가이드:</strong></p>
+<p>학생들이 AI 결과를 돌리면, 선생님은 교실을 돌아다니며 <strong>“이거 이상하지 않아요?”</strong>를 짚어주세요. 학생은 이상한 걸 놓치는 경우가 많습니다.</p>
+<blockquote>
+<p>선생님: “잠깐, 이거 3D로 돌려봐요. 뒤에서 보면 어때요?”
+학생: “어, 팔이 몸통을 뚫고 지나가요!”
+선생님: “그죠? 그거 종이에 적어요. 나중에 규칙이 될 거예요.”</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h5"><h5 id="실패-기록-양식-이번-차시용">실패 기록 양식 (이번 차시용)</h5><a class="sl-anchor-link" href="#실패-기록-양식-이번-차시용"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실패 기록 양식 (이번 차시용)”</span></a></div>
+<pre class="ef-ascii-box"><code>┌──────────────────────────────────────────────────────┐
+│ 애니메이션 실패 기록 #___     이름: ___________      │
+│                                                      │
+│ [내가 요청한 것]                                     │
+│ ________________________________________________     │
+│                                                      │
+│ [AI가 만든 애니메이션이 이상한 점]                   │
+│ (3D로 돌려보고, 여러 각도에서 확인)                  │
+│ ________________________________________________     │
+│ ________________________________________________     │
+│                                                      │
+│ [뭐가 원인인 것 같나?]                               │
+│ □ 회전축이 잘못됨                                   │
+│ □ 회전 중심이 잘못됨                                │
+│ □ 속도가 이상함                                     │
+│ □ 범위가 없음 (계속 같은 방향으로 가기만 함)        │
+│ □ 기타: _________________________________           │
+│                                                      │
+│ → 다음엔 어떻게 알려줘야 할까?                       │
+│ ________________________________________________     │
+└──────────────────────────────────────────────────────┘</code></pre>
+<p><strong>교사 유의사항:</strong></p>
+<ul>
+<li>학생이 <strong>3D 화면을 회전시켜 보지 않으면</strong> 회전축 오류를 발견 못 합니다. “앞에서 보지 말고, 옆에서, 뒤에서도 보세요”를 반복하세요.</li>
+<li>AI가 너무 잘 만들어버리는 경우 (드물지만): “그럼 이번엔 <strong>발을 번갈아 들게 해줘</strong>처럼 더 복잡한 걸 시켜보세요”로 난이도 올리기</li>
+<li>브라우저가 멈춘 학생: 탭 닫고 새로고침. <strong>이것도 실패 기록에 적기</strong> — “rate()를 누락하면 브라우저가 멈춘다”는 중요한 규칙입니다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="40-50분-실패-기록--규칙-파일에-추가">40-50분: 실패 기록 → 규칙 파일에 추가</h4><a class="sl-anchor-link" href="#40-50분-실패-기록--규칙-파일에-추가"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “40-50분: 실패 기록 → 규칙 파일에 추가”</span></a></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트-3">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트-3"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“자, 멈추세요. 종이에 적은 실패 기록을 꺼내세요.
+이제 이것들을 <strong>규칙으로 바꿀 거예요.</strong>”</p>
+</blockquote>
+<p>학생이 자기 규칙 파일(my_rules.md 또는 SYSTEM_PROMPT 스타일 문서)에 새 섹션을 추가합니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="markdown"><code><div class="ec-line"><div class="code"><span style="--0:#82B1FF;--1:#3B61B0">## 3D 애니메이션에서의 규칙</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> (규칙 문장) ← 사건: (어떤 실패 경험에서 나왔는지)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="## 3D 애니메이션에서의 규칙- (규칙 문장) ← 사건: (어떤 실패 경험에서 나왔는지)"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="규칙-변환-예시-선생님이-시범">규칙 변환 예시 (선생님이 시범)</h5><a class="sl-anchor-link" href="#규칙-변환-예시-선생님이-시범"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “규칙 변환 예시 (선생님이 시범)”</span></a></div>
+<p><strong>실패 기록:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">AI에게 "팔을 흔들어줘"라고 했더니</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">팔이 몸통을 뚫고 뒤쪽으로 회전함.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">마우스로 돌려보니 팔이 어깨가 아니라 원점 기준으로 돌고 있었음.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="AI에게 &#x22;팔을 흔들어줘&#x22;라고 했더니팔이 몸통을 뚫고 뒤쪽으로 회전함.마우스로 돌려보니 팔이 어깨가 아니라 원점 기준으로 돌고 있었음."><div></div></button></div></figure></div>
+<p><strong>규칙 변환:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="markdown"><code><div class="ec-line"><div class="code"><span style="--0:#82B1FF;--1:#3B61B0">## 3D 애니메이션에서의 규칙</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> AI는 rotate()의 origin(회전 중심)을 지정하지 않으면 원점 기준으로 회전시킨다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 회전 동작을 요청할 때는 "회전 중심 = (어깨 좌표)"를 반드시 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: "팔 흔들어줘"라고 했더니 팔이 몸통 한가운데를 뚫고 돌아감</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> AI는 "흔들어줘"라는 요청을 받으면 회전축을 임의로 고른다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 동작 요청 시 "회전축은 x축/y축/z축 중 ___"을 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: 팔이 앞뒤로 흔들려야 하는데 좌우로 흔들림</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="## 3D 애니메이션에서의 규칙- AI는 rotate()의 origin(회전 중심)을 지정하지 않으면 원점 기준으로 회전시킨다  → 회전 동작을 요청할 때는 &#x22;회전 중심 = (어깨 좌표)&#x22;를 반드시 명시할 것  ← 사건: &#x22;팔 흔들어줘&#x22;라고 했더니 팔이 몸통 한가운데를 뚫고 돌아감- AI는 &#x22;흔들어줘&#x22;라는 요청을 받으면 회전축을 임의로 고른다  → 동작 요청 시 &#x22;회전축은 x축/y축/z축 중 ___&#x22;을 명시할 것  ← 사건: 팔이 앞뒤로 흔들려야 하는데 좌우로 흔들림"><div></div></button></div></figure></div>
+<blockquote>
+<p>“자, 지금 여러분이 뽑은 규칙을 몇 개씩 공유해볼까요?”</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h5"><h5 id="흔히-나오는-규칙-예시-학생-언어로">흔히 나오는 규칙 예시 (학생 언어로)</h5><a class="sl-anchor-link" href="#흔히-나오는-규칙-예시-학생-언어로"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “흔히 나오는 규칙 예시 (학생 언어로)”</span></a></div>
+<p>교사가 학생들의 규칙을 칠판에 모읍니다. 흔히 나오는 것들:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>학생이 뽑은 규칙</th><th>규칙 파일에 어떻게 정리할까</th></tr></thead><tbody><tr><td>”AI는 흔들기를 시키면 회전축을 이상하게 고른다”</td><td>동작 요청 시 회전축을 명시할 것</td></tr><tr><td>”AI는 팔을 움직일 때 어깨가 아니라 원점을 중심으로 돌린다”</td><td>rotate의 origin을 명시할 것</td></tr><tr><td>”AI는 rate 없이 while 루프를 짜서 브라우저를 멈추게 한다”</td><td>while 루프에는 반드시 rate()를 포함시키라고 명시할 것</td></tr><tr><td>”AI는 ‘천천히’를 해석 못한다, 너무 빠르거나 너무 느림”</td><td>속도를 수치로(rate값, 각도 증분) 명시할 것</td></tr><tr><td>”AI는 범위를 안 정하면 한 방향으로만 계속 간다”</td><td>흔들기처럼 왕복 동작은 범위(-30°~+30°)를 명시할 것</td></tr><tr><td>”AI는 ‘팔’이라고 하면 한쪽만 움직인다”</td><td>양쪽 움직임은 “왼팔과 오른팔 둘 다”라고 명시할 것</td></tr></tbody></table>
+<p><strong>교사 유의사항:</strong></p>
+<ul>
+<li><strong>규칙에 “사건”이 꼭 붙어 있는지 확인하세요.</strong> “회전축 명시할 것”만 적혀 있으면 나중에 왜 그 규칙이 있는지 잊습니다. “팔이 뚫고 돌아감” 같은 사건 한 줄이 규칙을 살아있게 합니다.</li>
+<li>규칙이 너무 추상적이면 (“AI를 잘 쓰자”) → “구체적으로 뭘 시킬 때, 뭘 적어야 한다는 거예요?”</li>
+<li>이 시점에서 새 규칙이 <strong>최소 2개</strong> 이상 나오면 성공입니다. 욕심내지 마세요.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="-차시-4-50분-구조화된-동작-명세--종합-프로젝트">🕐 차시 4 (50분): 구조화된 동작 명세 + 종합 프로젝트</h3><a class="sl-anchor-link" href="#-차시-4-50분-구조화된-동작-명세--종합-프로젝트"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🕐 차시 4 (50분): 구조화된 동작 명세 + 종합 프로젝트”</span></a></div>
+<div class="sl-heading-wrapper level-h4"><h4 id="00-10분-동작-명세서-소개--이번엔-정확하게-시켜보자">00-10분: 동작 명세서 소개 — “이번엔 정확하게 시켜보자”</h4><a class="sl-anchor-link" href="#00-10분-동작-명세서-소개--이번엔-정확하게-시켜보자"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “00-10분: 동작 명세서 소개 — “이번엔 정확하게 시켜보자””</span></a></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트-4">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트-4"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“지난 시간에 뭘 배웠죠? AI에게 ‘팔 흔들어줘’라고 대충 시키면 팔이 몸통을 뚫고 돌아간다는 걸.
+그래서 규칙을 몇 개 추가했고요.</p>
+<p>그런데 <strong>규칙을 추가하는 것만으로는 부족</strong>해요. 같은 요청을 다시 보내도, 규칙을 뇌에 갖고 있는 건 <strong>여러분이지 AI가 아니에요.</strong>
+AI에게 <strong>그 규칙에 맞는 정보</strong>를 <strong>매번 요청에 담아서 보내야</strong> 해요.</p>
+<p>그 ‘정보의 덩어리’를 우리는 <strong>동작 명세서</strong>라고 부를 거예요.”</p>
+</blockquote>
+<p>교사가 화면에 동작 명세서 템플릿을 띄웁니다 (개념 4에서 소개한 6칸짜리 박스).</p>
+<blockquote>
+<p>“이 6칸을 다 채우면, AI는 더 이상 해석할 여지가 없어요.
+한번 모범답안을 보여줄게요. ‘팔 흔들기’ 동작을 명세로 바꾸면:“</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h5"><h5 id="모범-동작-명세서-예시">모범 동작 명세서 (예시)</h5><a class="sl-anchor-link" href="#모범-동작-명세서-예시"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “모범 동작 명세서 (예시)”</span></a></div>
+<pre class="ef-ascii-box"><code>┌───────────────────────────────────────────────────────┐
+│              동작 명세서                              │
+│  캐릭터: 내가 만든 로봇   동작 이름: 오른팔 흔들기    │
+│                                                       │
+│  [대상] 오른팔 (cylinder, 지난 시간에 만든 객체 이름) │
+│                                                       │
+│  [방식] □ 위치 변경   ■ 회전                        │
+│                                                       │
+│  [축]  ■ x축  □ y축  □ z축                         │
+│     (x축 = 캐릭터의 좌우 축 → 팔이 앞뒤로 흔들림)     │
+│                                                       │
+│  [중심] 어깨 좌표 = (1.0, 1.5, 0)                     │
+│                                                       │
+│  [범위] 각도: -30° ~ +30° (양 끝에서 방향 전환)       │
+│                                                       │
+│  [속도] 한 사이클(앞→뒤→앞): 0.8초                    │
+│         → rate(60), 각도 증분 ±0.04 rad               │
+│                                                       │
+│  [반복] ■ 무한 반복                                  │
+└───────────────────────────────────────────────────────┘</code></pre>
+<blockquote>
+<p>“이걸 글로 풀면 이렇게 돼요:“</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h5"><h5 id="ai에게-보낼-정밀-프롬프트">AI에게 보낼 정밀 프롬프트</h5><a class="sl-anchor-link" href="#ai에게-보낼-정밀-프롬프트"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “AI에게 보낼 정밀 프롬프트”</span></a></div>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">지난 시간에 만든 다음 캐릭터에 오른팔 흔들기 애니메이션을 추가해줘.</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[캐릭터 코드]</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">동작 명세:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 대상: right_arm (오른팔, cylinder)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 방식: 회전 (rotate)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 축: x축 → vector(1, 0, 0)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 회전 중심: 어깨 좌표 = vector(1.0, 1.5, 0)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 범위: -30° ~ +30° (라디안으로 -0.52 ~ +0.52)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 속도: rate(60), 각도 증분 0.04 rad/프레임</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 반복: 양 끝에 도달하면 방향 전환, 무한 반복</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">코드 요구사항:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- while True 루프 사용</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 반드시 rate(60) 포함 (브라우저 멈춤 방지)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 왼팔(left_arm)은 오른팔과 반대 방향(대칭) 흔들기로 동시에 추가</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 지정하지 않은 동작은 추가하지 말 것</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="지난 시간에 만든 다음 캐릭터에 오른팔 흔들기 애니메이션을 추가해줘.[캐릭터 코드]동작 명세:- 대상: right_arm (오른팔, cylinder)- 방식: 회전 (rotate)- 축: x축 → vector(1, 0, 0)- 회전 중심: 어깨 좌표 = vector(1.0, 1.5, 0)- 범위: -30° ~ +30° (라디안으로 -0.52 ~ +0.52)- 속도: rate(60), 각도 증분 0.04 rad/프레임- 반복: 양 끝에 도달하면 방향 전환, 무한 반복코드 요구사항:- while True 루프 사용- 반드시 rate(60) 포함 (브라우저 멈춤 방지)- 왼팔(left_arm)은 오른팔과 반대 방향(대칭) 흔들기로 동시에 추가- 지정하지 않은 동작은 추가하지 말 것"><div></div></button></div></figure></div>
+<blockquote>
+<p>“차이가 느껴지나요? 같은 ‘팔 흔들기’인데 말이죠.
+이게 바로 <strong>구조화된 명세의 위력</strong>이에요.”</p>
+</blockquote>
+<p><strong>교사 유의사항:</strong></p>
+<ul>
+<li>라디안(rad) 개념을 설명할 때: “원주율 π ≈ 3.14가 180°예요. 그러니까 30° ≈ 0.52rad. 외울 필요는 없어요, AI가 해석해줘요. 각도로 ‘30°‘라고 써도 AI가 알아들어요.”</li>
+<li>너무 복잡하다고 느끼는 학생: “6칸 다 못 채워도 돼요. <strong>축, 범위, 속도</strong> 3개만 명확히 써도 결과가 훨씬 좋아져요.”</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="10-30분-정밀-명세로-ai에게-재요청--비교">10-30분: 정밀 명세로 AI에게 재요청 → 비교</h4><a class="sl-anchor-link" href="#10-30분-정밀-명세로-ai에게-재요청--비교"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “10-30분: 정밀 명세로 AI에게 재요청 → 비교”</span></a></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트-5">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트-5"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“자, 여러분 차례예요. 5분 줄게요.</p>
+<p><strong>1단계:</strong> 지난 시간 규칙 파일과 동작 명세서 템플릿을 꺼내세요
+<strong>2단계:</strong> 여러분 캐릭터의 동작 한 가지를 골라 명세서 6칸을 채우세요
+<strong>3단계:</strong> 그걸 AI에게 보내세요
+<strong>4단계:</strong> 결과를 돌려보고, 모호한 요청 때와 비교하세요”</p>
+</blockquote>
+<p>학생이 선택지 4가지 중 하나를 해볼 수 있습니다:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>캐릭터</th><th>추천 동작</th><th>핵심 파라미터</th></tr></thead><tbody><tr><td>걷는 로봇</td><td>양 팔/다리 번갈아 흔들기</td><td>축: x축, 범위: ±30°, 좌우 대칭</td></tr><tr><td>날갯짓하는 새</td><td>양 날개가 위아래로 펄럭</td><td>축: z축, 범위: ±45°, 좌우 대칭</td></tr><tr><td>회전하는 풍차</td><td>날개가 제자리에서 회전</td><td>축: z축, 범위: 제한 없음(연속), 속도 일정</td></tr><tr><td>뛰어노는 강아지</td><td>상하 바운스 + 꼬리 흔들기</td><td>몸통: y축 .pos 변동, 꼬리: y축 회전</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h5"><h5 id="예상-질문과-대응">예상 질문과 대응</h5><a class="sl-anchor-link" href="#예상-질문과-대응"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “예상 질문과 대응”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>학생 질문</th><th>선생님 대응</th></tr></thead><tbody><tr><td>”라디안이 뭐예요?"</td><td>"AI가 알아서 계산해줘요. 그냥 ‘-30°에서 +30°‘라고 써도 돼요."</td></tr><tr><td>"회전 중심이 어디인지 모르겠어요"</td><td>"어깨 위치가 뭐였죠? pos=(1.0, 1.5, 0) 이런 거요. 그걸 중심으로 쓰세요."</td></tr><tr><td>"속도는 어떻게 정해요?"</td><td>"처음엔 rate(60), 각도 증분 0.03 정도로 시작하세요. 너무 빠르면 줄이고요."</td></tr><tr><td>"좌우 대칭은 어떻게 시켜요?"</td><td>"왼쪽과 오른쪽이 반대 방향으로 움직이게 해달라고 쓰세요. ‘left_arm과 right_arm은 항상 반대 방향’ 이렇게요.”</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h5"><h5 id="비교-워크시트">비교 워크시트</h5><a class="sl-anchor-link" href="#비교-워크시트"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “비교 워크시트”</span></a></div>
+<p>학생이 모호한 요청 결과(차시 3)와 정밀 명세 결과(차시 4)를 나란히 비교합니다.</p>
+<pre class="ef-ascii-box"><code>┌───────────────────────────────────────────────────────────┐
+│ 모호 vs 정밀 비교                                         │
+│                                                           │
+│                │ 모호한 요청     │ 정밀한 명세            │
+│  ───────────── │ ─────────────── │ ────────────────────   │
+│ 회전축         │ □ 맞음 □ 틀림  │ □ 맞음 □ 틀림       │
+│ 회전 중심      │ □ 맞음 □ 틀림  │ □ 맞음 □ 틀림       │
+│ 속도 적절함    │ □ 맞음 □ 틀림  │ □ 맞음 □ 틀림       │
+│ 범위 지킴      │ □ 맞음 □ 틀림  │ □ 맞음 □ 틀림       │
+│ 좌우 대칭      │ □ 맞음 □ 틀림  │ □ 맞음 □ 틀림       │
+│ 관통 없음      │ □ 맞음 □ 틀림  │ □ 맞음 □ 틀림       │
+│ 브라우저 안 멈춤│ □ 맞음 □ 틀림  │ □ 맞음 □ 틀림      │
+│                                                           │
+│ 통과 개수      │ ___/7           │ ___/7                  │
+└───────────────────────────────────────────────────────────┘</code></pre>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-마무리-멘트-이-구간-끝에">선생님 마무리 멘트 (이 구간 끝에)</h5><a class="sl-anchor-link" href="#선생님-마무리-멘트-이-구간-끝에"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 마무리 멘트 (이 구간 끝에)”</span></a></div>
+<blockquote>
+<p>“자, 숫자 보세요. 모호한 요청에서 몇 개 통과했어요? 정밀 명세에서는 몇 개?
+압도적으로 차이가 나죠?</p>
+<p>지난 시간 Fowler 얘기 기억나요? ‘뭘 시킬지 정확히 정하는 게 실력이다.’
+여러분이 방금 한 게 바로 그거예요. <strong>움직임을 숫자로 바꿔서 AI에게 던진 것.</strong>”</p>
+</blockquote>
+<p><strong>교사 유의사항:</strong></p>
+<ul>
+<li>정밀 명세를 보냈는데도 AI가 여전히 틀리는 경우가 있습니다. 이것은 <strong>더 좋은 규칙의 씨앗</strong>입니다. “AI가 명세를 줬는데도 이걸 틀렸어요! 이건 어떻게 규칙으로 만들까요?”</li>
+<li>“AI가 완벽하게 맞춰버린” 학생: “그럼 더 복잡한 동작 시켜보세요. 양쪽 팔 + 양쪽 다리 동시에, 걷는 것처럼이요.”</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="30-45분-종합-프로젝트--캐릭터-하나-선택해서-완성">30-45분: 종합 프로젝트 — 캐릭터 하나 선택해서 완성</h4><a class="sl-anchor-link" href="#30-45분-종합-프로젝트--캐릭터-하나-선택해서-완성"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “30-45분: 종합 프로젝트 — 캐릭터 하나 선택해서 완성”</span></a></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트-6">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트-6"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“이제 15분 줄게요. 네 가지 선택지 중 하나를 골라 <strong>완성도 있는 애니메이션</strong>을 만들어보세요.
+이미 만든 거 이어서 해도 되고, 새로 시작해도 돼요.”</p>
+</blockquote>
+<p><strong>선택지와 난이도:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>프로젝트</th><th align="center">난이도</th><th>핵심 어려움</th><th>예상 규칙 추가</th></tr></thead><tbody><tr><td>걷는 로봇</td><td align="center">★★★</td><td>팔·다리 4개 동시 조율 + 몸통 이동</td><td>좌우 반대 위상 명시, 주기 동기화</td></tr><tr><td>날갯짓하는 새</td><td align="center">★★</td><td>날개 + 전진 이동의 조합</td><td>복합 동작 순서</td></tr><tr><td>회전하는 풍차</td><td align="center">★</td><td>연속 회전 (범위 제한 없음)</td><td>회전 중심 = 풍차 축</td></tr><tr><td>뛰어노는 강아지</td><td align="center">★★</td><td>바운스(.pos) + 꼬리(rotate) 복합</td><td>두 방식 조합</td></tr></tbody></table>
+<blockquote>
+<p>“완성이 목표가 아니에요. <strong>동작 명세서를 제대로 썼느냐</strong>가 목표예요.
+완성 못 해도 되니까, 명세서 종이에 꼭 적고 시작하세요.”</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h5"><h5 id="수용-기준-사전-정의-학생에게-요구">수용 기준 사전 정의 (학생에게 요구)</h5><a class="sl-anchor-link" href="#수용-기준-사전-정의-학생에게-요구"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “수용 기준 사전 정의 (학생에게 요구)”</span></a></div>
+<p>AI에게 시키기 <strong>전에</strong> 학생이 수용 기준을 적습니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[나의 수용 기준 — 종합 프로젝트]</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">필수:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ 관통 없음 (도형이 다른 도형을 뚫고 지나가지 않음)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ 브라우저 안 멈춤 (rate 포함)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ 동작이 반복됨 (한 번만 하고 멈추지 않음)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ 좌우 대칭 (대칭이 필요한 동작의 경우)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ _______________________________</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">선호:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ 속도가 자연스러움 (너무 빠르지도 느리지도 않음)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ 명세에 없는 동작을 AI가 임의로 추가하지 않음</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">□ _______________________________</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="[나의 수용 기준 — 종합 프로젝트]필수:□ 관통 없음 (도형이 다른 도형을 뚫고 지나가지 않음)□ 브라우저 안 멈춤 (rate 포함)□ 동작이 반복됨 (한 번만 하고 멈추지 않음)□ 좌우 대칭 (대칭이 필요한 동작의 경우)□ _______________________________선호:□ 속도가 자연스러움 (너무 빠르지도 느리지도 않음)□ 명세에 없는 동작을 AI가 임의로 추가하지 않음□ _______________________________"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="교사-활동-가이드">교사 활동 가이드</h5><a class="sl-anchor-link" href="#교사-활동-가이드"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “교사 활동 가이드”</span></a></div>
+<p>돌아다니면서 확인할 것:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>확인 포인트</th><th>학생에게 할 질문</th></tr></thead><tbody><tr><td>명세서를 안 쓰고 바로 AI에게 시킨 학생</td><td>”종이에 먼저 6칸 채우세요. 바로 AI 금지.”</td></tr><tr><td>AI 결과를 정면에서만 본 학생</td><td>”옆에서, 뒤에서도 봐요. 마우스 오른쪽으로 드래그!”</td></tr><tr><td>수용 기준 없이 AI 결과를 “잘됐네” 하는 학생</td><td>”수용 기준으로 체크해보세요. 합격인지 불합격인지.”</td></tr><tr><td>새 규칙을 안 적은 학생</td><td>”이번에 AI가 뭘 틀렸어요? 아니면 뭘 잘했어요? 그걸로 규칙 추가하세요.”</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h4"><h4 id="45-50분-규칙-파일-업데이트--정리">45-50분: 규칙 파일 업데이트 + 정리</h4><a class="sl-anchor-link" href="#45-50분-규칙-파일-업데이트--정리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “45-50분: 규칙 파일 업데이트 + 정리”</span></a></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="선생님-스크립트-7">선생님 스크립트</h5><a class="sl-anchor-link" href="#선생님-스크립트-7"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선생님 스크립트”</span></a></div>
+<blockquote>
+<p>“자, 멈추세요. 다 완성 못 했어도 괜찮아요.
+규칙 파일 열어보세요. 이번 차시에 몇 개 자랐나요?”</p>
+</blockquote>
+<p><strong>예상 반응:</strong></p>
+<ul>
+<li>“3개 추가요, 이제 총 13개” / “5개 늘어서 18개!” / “저는 2개…”</li>
+</ul>
+<blockquote>
+<p>“숫자보다 <strong>사건이 제대로 적혔는지</strong>가 더 중요해요.
+옆 친구랑 규칙 한 개씩만 읽어주세요. ‘이 규칙은 무슨 사건에서 나왔어’라고요.”</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h5"><h5 id="이번-차시에서-흔히-나오는-규칙-모음">이번 차시에서 흔히 나오는 규칙 모음</h5><a class="sl-anchor-link" href="#이번-차시에서-흔히-나오는-규칙-모음"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “이번 차시에서 흔히 나오는 규칙 모음”</span></a></div>
+<p>교사가 화면에 예시를 띄워줍니다 (학생이 비슷한 걸 못 적었으면 지금 추가할 기회):</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="markdown"><code><div class="ec-line"><div class="code"><span style="--0:#82B1FF;--1:#3B61B0">## 3D 애니메이션에서의 규칙 (트랙 A 차시 3-4)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> rotate()의 origin을 지정하지 않으면 AI는 원점(0,0,0) 기준으로 회전시킨다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 회전 동작 요청 시 "회전 중심"을 좌표로 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: 팔이 어깨가 아닌 몸통 중앙에서 돌아감</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> "흔들기"는 모호한 용어다. AI는 축을 임의로 고른다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 흔들기 요청 시 회전축(x/y/z)을 반드시 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: "팔 흔들어줘" → 팔이 좌우로 움직임(원했던 건 앞뒤)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> while True 루프에 rate()가 없으면 브라우저가 멈춘다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 애니메이션 요청 시 "rate(60) 반드시 포함"을 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: AI 코드에 rate가 빠져서 탭이 얼어버림</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> "천천히", "빠르게" 같은 말은 AI가 해석한다(들쭉날쭉)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 속도는 rate 값과 각도 증분으로 수치 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: "천천히 흔들어줘" → 30초에 한 번 흔들리는 정도</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 왕복 동작은 범위를 명시하지 않으면 한 방향으로만 계속 진행된다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 왕복 동작에는 "min~max 범위" 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: 팔이 흔들기를 하다가 한 방향으로 계속 돌아감</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> 좌우 대칭 동작을 요청할 때 AI는 한쪽만 움직일 수 있다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ "왼쪽과 오른쪽이 반대 위상으로 동시에 움직여야 한다" 명시할 것</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: "팔 흔들어줘" → 오른팔만 흔들리고 왼팔은 가만히 있음</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="## 3D 애니메이션에서의 규칙 (트랙 A 차시 3-4)- rotate()의 origin을 지정하지 않으면 AI는 원점(0,0,0) 기준으로 회전시킨다  → 회전 동작 요청 시 &#x22;회전 중심&#x22;을 좌표로 명시할 것  ← 사건: 팔이 어깨가 아닌 몸통 중앙에서 돌아감- &#x22;흔들기&#x22;는 모호한 용어다. AI는 축을 임의로 고른다  → 흔들기 요청 시 회전축(x/y/z)을 반드시 명시할 것  ← 사건: &#x22;팔 흔들어줘&#x22; → 팔이 좌우로 움직임(원했던 건 앞뒤)- while True 루프에 rate()가 없으면 브라우저가 멈춘다  → 애니메이션 요청 시 &#x22;rate(60) 반드시 포함&#x22;을 명시할 것  ← 사건: AI 코드에 rate가 빠져서 탭이 얼어버림- &#x22;천천히&#x22;, &#x22;빠르게&#x22; 같은 말은 AI가 해석한다(들쭉날쭉)  → 속도는 rate 값과 각도 증분으로 수치 명시할 것  ← 사건: &#x22;천천히 흔들어줘&#x22; → 30초에 한 번 흔들리는 정도- 왕복 동작은 범위를 명시하지 않으면 한 방향으로만 계속 진행된다  → 왕복 동작에는 &#x22;min~max 범위&#x22; 명시할 것  ← 사건: 팔이 흔들기를 하다가 한 방향으로 계속 돌아감- 좌우 대칭 동작을 요청할 때 AI는 한쪽만 움직일 수 있다  → &#x22;왼쪽과 오른쪽이 반대 위상으로 동시에 움직여야 한다&#x22; 명시할 것  ← 사건: &#x22;팔 흔들어줘&#x22; → 오른팔만 흔들리고 왼팔은 가만히 있음"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h5"><h5 id="마무리-멘트">마무리 멘트</h5><a class="sl-anchor-link" href="#마무리-멘트"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “마무리 멘트”</span></a></div>
+<blockquote>
+<p>“오늘 한 문장으로 정리할게요:
+<strong>‘정지된 것을 묘사하려면 좌표로 충분하지만, 움직이는 것을 묘사하려면 축·범위·속도·반복까지 필요하다.’</strong></p>
+<p>다음 시간(차시 5-6)에는 여기에 한 가지 차원이 더 추가돼요. <strong>물리 법칙</strong>이요.
+공을 던지면 중력 때문에 포물선을 그려야 하고, 진자는 점점 느려지죠.
+그때는 여러분의 검증 방법이 <strong>‘눈으로 보기’에서 ‘수치로 계산한 값과 비교’로</strong> 올라갑니다.</p>
+<p>규칙 파일이 또 두꺼워질 거예요. 기대하세요.”</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="️-자주-하는-실수">⚠️ 자주 하는 실수</h2><a class="sl-anchor-link" href="#️-자주-하는-실수"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “⚠️ 자주 하는 실수”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-1-rate를-빼먹어서-브라우저가-멈춤">실수 1: <code dir="auto">rate()</code>를 빼먹어서 브라우저가 멈춤</h3><a class="sl-anchor-link" href="#실수-1-rate를-빼먹어서-브라우저가-멈춤"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 1: rate()를 빼먹어서 브라우저가 멈춤”</span></a></div>
+<p><strong>증상:</strong> GlowScript가 “응답 없음” 상태가 되거나, 프로그램이 켜자마자 얼어버림.</p>
+<p><strong>원인:</strong> <code dir="auto">while True:</code> 안에 <code dir="auto">rate()</code>가 없으면 초당 수만 번 실행되면서 브라우저 자원을 다 잡아먹습니다.</p>
+<p><strong>해결:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)  </span><span style="--0:#919F9F;--1:#5F636F"># 이 줄이 반드시 있어야 함!</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F"># ... 나머지 애니메이션 코드 ...</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="while True:    rate(60)  # 이 줄이 반드시 있어야 함!    # ... 나머지 애니메이션 코드 ..."><div></div></button></div></figure></div>
+<p><strong>학생에게 설명할 때:</strong> “rate(60)은 ‘초당 60번만 실행해, 그 이상 빨리 돌려고 하지 마’라고 컴퓨터에게 말하는 거예요. 없으면 컴퓨터가 미친듯이 반복해요.”</p>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-2-회전인데-pos를-바꿔서-관통-이동">실수 2: 회전인데 <code dir="auto">.pos</code>를 바꿔서 관통 이동</h3><a class="sl-anchor-link" href="#실수-2-회전인데-pos를-바꿔서-관통-이동"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 2: 회전인데 .pos를 바꿔서 관통 이동”</span></a></div>
+<p><strong>증상:</strong> 팔을 흔들라고 했는데, 팔이 몸통을 뚫고 좌우로 미끄러짐.</p>
+<p><strong>원인:</strong> 회전과 위치 변경을 혼동. <code dir="auto">left_arm.pos.x = ...</code>처럼 .pos를 흔들면, 팔 전체가 좌우로 이동합니다. <strong>회전이 아닙니다.</strong></p>
+<p><strong>해결:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># ❌ 잘못: 위치 변경 → 관통 이동</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">left_arm.pos.x </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> left_arm.pos.x </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.05</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># ✅ 올바름: 회전 → 어깨 중심으로 흔들림</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">left_arm.</span><span style="--0:#B2CCD6;--1:#096E72">rotate</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">angle</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D9F5DD;--1:#111111">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">                </span><span style="--0:#D7DBE0;--1:#403F53">axis</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#D9F5DD;--1:#111111">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">                </span><span style="--0:#D7DBE0;--1:#403F53">origin</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C792EA;--1:#8844AE">-</span><span style="--0:#F78C6C;--1:#AA0982">1.0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">1.5</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">))  </span><span style="--0:#919F9F;--1:#5F636F"># 어깨 좌표</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="# ❌ 잘못: 위치 변경 → 관통 이동left_arm.pos.x = left_arm.pos.x + 0.05# ✅ 올바름: 회전 → 어깨 중심으로 흔들림left_arm.rotate(angle=0.05,                axis=vector(1, 0, 0),                origin=vector(-1.0, 1.5, 0))  # 어깨 좌표"><div></div></button></div></figure></div>
+<p><strong>학생에게 설명할 때:</strong> “흔들기는 <strong>회전</strong>이지 <strong>이동</strong>이 아니에요. 팔 끝이 원호를 그리면서 움직여야 해요.”</p>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-3-회전-중심origin을-빠뜨려서-팔이-원점-기준으로-돈다">실수 3: 회전 중심(origin)을 빠뜨려서 팔이 원점 기준으로 돈다</h3><a class="sl-anchor-link" href="#실수-3-회전-중심origin을-빠뜨려서-팔이-원점-기준으로-돈다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 3: 회전 중심(origin)을 빠뜨려서 팔이 원점 기준으로 돈다”</span></a></div>
+<p><strong>증상:</strong> 팔이 어깨가 아닌, 화면 중앙(0,0,0)을 중심으로 빙빙 돎.</p>
+<p><strong>원인:</strong> <code dir="auto">rotate()</code>에 <code dir="auto">origin</code>을 지정하지 않으면 원점 기준으로 회전합니다.</p>
+<p><strong>해결:</strong> <code dir="auto">origin</code>을 꼭 지정하세요.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">left_arm.</span><span style="--0:#B2CCD6;--1:#096E72">rotate</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">angle</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#F78C6C;--1:#AA0982">0.05</span><span style="--0:#D9F5DD;--1:#111111">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">                </span><span style="--0:#D7DBE0;--1:#403F53">axis</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#D9F5DD;--1:#111111">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">                </span><span style="--0:#D7DBE0;--1:#403F53">origin</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#B2CCD6;--1:#096E72">vector</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C792EA;--1:#8844AE">-</span><span style="--0:#F78C6C;--1:#AA0982">1.0</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">1.5</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">))  </span><span style="--0:#919F9F;--1:#5F636F"># ← 이 줄이 핵심</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="left_arm.rotate(angle=0.05,                axis=vector(1, 0, 0),                origin=vector(-1.0, 1.5, 0))  # ← 이 줄이 핵심"><div></div></button></div></figure></div>
+<p><strong>학생에게 설명할 때:</strong> “꼬치구이의 꼬챙이가 어디 꽂혀 있느냐가 axis예요. 꼬챙이의 <strong>위치</strong>가 origin이고요. axis만 쓰면 ‘방향’은 맞지만, 꼬챙이가 어디 있는지는 원점에 있다고 가정해버려요.”</p>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="실수-4-속도를-말로-설명해서-ai가-마음대로-정함">실수 4: 속도를 말로 설명해서 AI가 마음대로 정함</h3><a class="sl-anchor-link" href="#실수-4-속도를-말로-설명해서-ai가-마음대로-정함"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실수 4: 속도를 말로 설명해서 AI가 마음대로 정함”</span></a></div>
+<p><strong>증상:</strong> “천천히 흔들어줘”라고 했는데 초당 10번 흔들리거나, 반대로 30초에 한 번 흔들림.</p>
+<p><strong>원인:</strong> “천천히”는 주관적 표현. AI는 자기 기준으로 해석합니다.</p>
+<p><strong>해결:</strong> 수치로 명시.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">속도 명세:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- rate(60)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 각도 증분: 0.03 rad/프레임</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- 한 사이클(앞→뒤→앞) 예상 시간: 약 0.7초</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="속도 명세:- rate(60)- 각도 증분: 0.03 rad/프레임- 한 사이클(앞→뒤→앞) 예상 시간: 약 0.7초"><div></div></button></div></figure></div>
+<p><strong>학생에게 설명할 때:</strong> “‘빨리’, ‘천천히’는 AI의 기준이 내 기준과 달라요. ‘rate(60)에 각도 증분 0.03’ 이렇게 숫자로 줘야 해요.”</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-스스로-점검하기">✅ 스스로 점검하기</h2><a class="sl-anchor-link" href="#-스스로-점검하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “✅ 스스로 점검하기”</span></a></div>
+<p>아래 질문에 답해보세요. 답이 안 떠오르면 해당 섹션을 다시 읽어보세요.</p>
+<ol>
+<li><code dir="auto">rate(30)</code>과 <code dir="auto">rate(60)</code>의 차이는?</li>
+<li><code dir="auto">.pos</code>를 바꾸는 것과 <code dir="auto">rotate()</code>를 호출하는 것의 차이는?</li>
+<li><code dir="auto">rotate()</code>의 세 가지 매개변수는?</li>
+<li>팔이 몸통을 관통하며 도는 문제의 가장 흔한 원인은 무엇이고, 어떻게 고치나?</li>
+<li>동작 명세서의 6가지 항목은?</li>
+<li>AI에게 “팔 흔들어줘”라고만 했을 때 흔히 발생하는 실수 3가지를 들어보세요.</li>
+<li>“왼팔과 오른팔이 반대 위상으로 대칭되게 흔들리기”를 AI에게 정확히 전달하려면 어떤 정보가 필요할까요?</li>
+</ol>
+<details>
+<summary>참고 답안</summary>
+<ol>
+<li>rate(30)은 초당 30프레임, rate(60)은 초당 60프레임. 60이 더 부드러움.</li>
+<li>.pos는 도형 전체를 이동시킴. rotate는 지정한 축 주위로 돌게 함.</li>
+<li>angle(각도), axis(축 방향), origin(회전 중심).</li>
+<li><code dir="auto">rotate()</code>에 <code dir="auto">origin</code>을 명시하지 않아 원점 기준으로 회전한 것. <code dir="auto">origin=vector(어깨좌표)</code>를 추가.</li>
+<li>대상, 방식(위치/회전), 축, 중심, 범위, 속도, 반복 조건.</li>
+<li>① 회전축이 엉뚱함 ② 회전 중심 없이 원점 기준 회전 ③ 한쪽만 움직임 ④ 속도가 비현실적 ⑤ rate 누락으로 브라우저 멈춤 중 3개.</li>
+<li>① 양쪽 팔 객체 이름 ② 공통 회전축 ③ 공통 범위(예: ±30°) ④ 속도 일치(같은 rate, 같은 증분) ⑤ 위상 반대(한쪽이 +일 때 다른 쪽이 -).</li>
+</ol>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-더-해보기">🚀 더 해보기</h2><a class="sl-anchor-link" href="#-더-해보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🚀 더 해보기”</span></a></div>
+<p>수업 시간에 다 못 하더라도, 다음 기회에 시도해볼 만한 확장 과제들입니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="초급-부드러운-흔들기-sin-함수">초급: 부드러운 흔들기 (sin 함수)</h3><a class="sl-anchor-link" href="#초급-부드러운-흔들기-sin-함수"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “초급: 부드러운 흔들기 (sin 함수)”</span></a></div>
+<p>각도를 직접 증감하는 대신 <code dir="auto">sin(t)</code>을 쓰면 자연스러운 왕복 운동이 됩니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">t </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">while</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#FF6A83;--1:#A24848">True</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#B2CCD6;--1:#096E72">rate</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">60</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">angle </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.5</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">*</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#B2CCD6;--1:#096E72">sin</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">t</span><span style="--0:#D6DEEB;--1:#403F53">)  </span><span style="--0:#919F9F;--1:#5F636F"># -0.5 ~ +0.5 사이를 부드럽게</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">left_arm.</span><span style="--0:#B2CCD6;--1:#096E72">rotate</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">angle</span></span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#82AAFF;--1:#3B61B0">angle </span><span style="--0:#C792EA;--1:#8844AE">-</span><span style="--0:#82AAFF;--1:#3B61B0"> prev_angle</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> ...</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">prev_angle </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> angle</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">t </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> t </span><span style="--0:#C792EA;--1:#8844AE">+</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.05</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="t = 0while True:    rate(60)    angle = 0.5 * sin(t)  # -0.5 ~ +0.5 사이를 부드럽게    left_arm.rotate(angle=angle - prev_angle, ...)    prev_angle = angle    t = t + 0.05"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="중급-키보드-제어-애니메이션">중급: 키보드 제어 애니메이션</h3><a class="sl-anchor-link" href="#중급-키보드-제어-애니메이션"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “중급: 키보드 제어 애니메이션”</span></a></div>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">def</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">on_key</span><span style="--0:#D9F5DD;--1:#111111">(</span><span style="--0:#7FDBCA;--1:#096E72">evt</span><span style="--0:#D9F5DD;--1:#111111">)</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">if</span><span style="--0:#D6DEEB;--1:#403F53"> evt.key </span><span style="--0:#C792EA;--1:#8844AE">==</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">a</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#919F9F;--1:#5F636F"># 왼쪽 이동</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">if</span><span style="--0:#D6DEEB;--1:#403F53"> evt.key </span><span style="--0:#C792EA;--1:#8844AE">==</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">d</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#919F9F;--1:#5F636F"># 오른쪽 이동</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">scene.</span><span style="--0:#B2CCD6;--1:#096E72">bind</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">keydown</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D9F5DD;--1:#111111">,</span><span style="--0:#82AAFF;--1:#3B61B0"> on_key</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="def on_key(evt):    if evt.key == &#x27;a&#x27;:        # 왼쪽 이동    if evt.key == &#x27;d&#x27;:        # 오른쪽 이동scene.bind(&#x27;keydown&#x27;, on_key)"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="상급-걷기-애니메이션-완성하기">상급: 걷기 애니메이션 완성하기</h3><a class="sl-anchor-link" href="#상급-걷기-애니메이션-완성하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “상급: 걷기 애니메이션 완성하기”</span></a></div>
+<p>한 “걸음 주기” 안에서:</p>
+<ul>
+<li>왼발이 앞으로 나오는 동안 오른팔이 앞으로</li>
+<li>오른발이 앞으로 나오는 동안 왼팔이 앞으로</li>
+<li>몸통이 살짝 위아래로 바운스</li>
+</ul>
+<p>각 관절의 <strong>위상(phase)</strong> 을 수치로 설계해보세요.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="ai-활용-아이디어">AI 활용 아이디어</h3><a class="sl-anchor-link" href="#ai-활용-아이디어"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “AI 활용 아이디어”</span></a></div>
+<p>“걷는 애니메이션의 동작 명세서를 만들고 싶은데, 각 관절의 위상 관계를 정리해줘”라고 AI에게 <strong>구조 설계</strong>를 시켜보세요. 명세서 자체를 AI가 도와주게 하는 것 — 그런데 검증은 여러분이 합니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-다음-장으로">🔗 다음 장으로</h2><a class="sl-anchor-link" href="#-다음-장으로"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🔗 다음 장으로”</span></a></div>
+<p><strong>차시 5-6: “물리 시뮬레이션 — 이제 수치로 검증한다”</strong></p>
+<p>지금까지의 검증은 <strong>“눈으로 보기”</strong> 였습니다. 팔이 관통하는지, 속도가 자연스러운지 — 모두 시각적 판단이었죠.</p>
+<p>다음 차시부터는 검증이 한 단계 올라갑니다. <strong>이론값과의 수치 비교</strong>입니다.</p>
+<p>공을 45° 각도, 20m/s 속도로 던지면 도달 거리는 물리 공식으로 약 40.8m입니다. AI에게 “공 던지기 시뮬레이션 만들어줘”라고 시킨 후, 결과의 도달 거리를 재서 이 이론값과 비교합니다. ±5% 이내면 합격, 아니면 불합격.</p>
+<p>AI가 자주 하는 실수:</p>
+<ul>
+<li><strong>dt(시간 간격)를 너무 크게 잡아서 수치 오차 발생</strong></li>
+<li><strong>중력 가속도를 9.8이 아닌 10으로 반올림</strong></li>
+<li><strong>마찰, 공기저항을 임의로 추가</strong></li>
+<li><strong>초기 조건(속도, 각도)을 AI가 마음대로 변경</strong></li>
+</ul>
+<p>지금까지의 “모호 → 정밀” 교훈이 <strong>물리 공식</strong>이라는 새로운 검증 도구와 만나, 규칙 파일이 또 한 층 두꺼워집니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-확인-문제">📝 확인 문제</h2><a class="sl-anchor-link" href="#-확인-문제"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📝 확인 문제”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="객관식-1">객관식 1</h3><a class="sl-anchor-link" href="#객관식-1"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “객관식 1”</span></a></div>
+<p>VPython 애니메이션에서 다음 중 <strong>반드시</strong> 있어야 브라우저가 멈추지 않는 것은?</p>
+<p>① <code dir="auto">while True:</code>
+② <code dir="auto">rate(60)</code>
+③ <code dir="auto">sphere()</code>
+④ <code dir="auto">rotate()</code></p>
+<details><summary>정답 확인</summary>
+<p><strong>정답: ②</strong></p>
+<p><code dir="auto">rate(60)</code>은 초당 실행 횟수를 제한합니다. <code dir="auto">while True:</code>는 무한 루프를 만들지만 rate가 없으면 초당 수만 번 실행되어 브라우저가 얼어버립니다. rate는 애니메이션 루프의 필수 요소입니다.</p>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="객관식-2">객관식 2</h3><a class="sl-anchor-link" href="#객관식-2"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “객관식 2”</span></a></div>
+<p>학생이 AI에게 “팔을 흔들어줘”라고 요청했더니 팔이 몸통을 뚫고 뒤로 회전했습니다. 가장 가능성이 높은 원인은?</p>
+<p>① <code dir="auto">rate()</code>를 쓰지 않아서
+② <code dir="auto">rotate()</code>의 <code dir="auto">origin</code>을 지정하지 않아 원점 기준으로 회전해서
+③ 팔의 크기가 너무 커서
+④ 색상이 잘못 지정돼서</p>
+<details><summary>정답 확인</summary>
+<p><strong>정답: ②</strong></p>
+<p><code dir="auto">rotate()</code>에 <code dir="auto">origin</code>(회전 중심)을 지정하지 않으면 기본값인 원점(0,0,0)을 중심으로 회전합니다. 팔이 어깨 기준으로 흔들리게 하려면 <code dir="auto">origin=vector(어깨x, 어깨y, 어깨z)</code>를 반드시 포함해야 합니다. 이것이 애니메이션에서 AI가 가장 자주 하는 실수 중 하나입니다.</p>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="객관식-3">객관식 3</h3><a class="sl-anchor-link" href="#객관식-3"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “객관식 3”</span></a></div>
+<p>다음 중 “동작 명세서”에 포함해야 할 항목이 <strong>아닌</strong> 것은?</p>
+<p>① 회전축 (x/y/z)
+② 회전 범위 (각도 최소~최대)
+③ 반복 조건 (무한? N번?)
+④ 도형의 색상</p>
+<details><summary>정답 확인</summary>
+<p><strong>정답: ④</strong></p>
+<p>색상은 <strong>정적 명세</strong>에 속하는 항목(차시 1-2)이며, 이미 정해진 상태에서 시작합니다. 동작 명세서는 <strong>움직임을 기술하는 것</strong>이므로 축, 중심, 범위, 속도, 반복 조건이 핵심 항목입니다.</p>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="서술형">서술형</h3><a class="sl-anchor-link" href="#서술형"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “서술형”</span></a></div>
+<p>학생이 AI에게 다음 요청을 보냈다고 가정합시다:</p>
+<blockquote>
+<p>“내가 만든 풍차를 회전시켜줘.”</p>
+</blockquote>
+<p>AI가 만든 코드를 실행했더니 풍차 <strong>날개만</strong> 제자리에서 도는 게 아니라, <strong>풍차 전체가 원점을 중심으로 공전</strong>하는 결과가 나왔습니다.</p>
+<p>이 실패로부터 어떤 규칙을 추가해야 할까요? 규칙 파일에 들어갈 형태로 (규칙 + 사건 기록 포함) 작성해보세요.</p>
+<details><summary>정답 예시</summary>
+<p><strong>답안 예시:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="markdown"><code><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">-</span><span style="--0:#D6DEEB;--1:#403F53"> AI는 "회전"을 전체 객체의 궤도 회전으로 해석할 수 있다</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">→ 회전 요청 시 "어떤 부분만 회전하는지"와 "회전 중심이 어디인지"를</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">분리하여 명시할 것 (예: "날개만 회전, 중심은 풍차 기둥 꼭대기")</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">← 사건: "풍차 회전시켜줘" → 풍차 전체가 원점을 공전함</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">(원하는 건 날개만 기둥 꼭대기에서 회전)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="- AI는 &#x22;회전&#x22;을 전체 객체의 궤도 회전으로 해석할 수 있다  → 회전 요청 시 &#x22;어떤 부분만 회전하는지&#x22;와 &#x22;회전 중심이 어디인지&#x22;를    분리하여 명시할 것 (예: &#x22;날개만 회전, 중심은 풍차 기둥 꼭대기&#x22;)  ← 사건: &#x22;풍차 회전시켜줘&#x22; → 풍차 전체가 원점을 공전함    (원하는 건 날개만 기둥 꼭대기에서 회전)"><div></div></button></div></figure></div>
+<p><strong>채점 포인트:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 규칙 문장이 구체적이고 실천 가능한가 (“AI를 잘 쓰자” 수준이면 감점)</li>
+<li class="task-list-item"><input type="checkbox" disabled> “이 규칙이 생긴 사건”이 포함되어 있는가</li>
+<li class="task-list-item"><input type="checkbox" disabled> 원인 분석(“회전을 궤도 회전으로 해석”)이 담겨 있는가</li>
+<li class="task-list-item"><input type="checkbox" disabled> 해결책(“무엇을, 어디를 중심으로 회전할지 분리 명시”)이 담겨 있는가</li>
+</ul>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-이-차시를-마치며">🎬 이 차시를 마치며</h2><a class="sl-anchor-link" href="#-이-차시를-마치며"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🎬 이 차시를 마치며”</span></a></div>
+<blockquote>
+<p>“움직임은 단순한 좌표보다 훨씬 많은 차원을 가지고 있습니다.
+축, 중심, 범위, 속도, 반복 — 이 다섯 가지를 수치로 적는 순간,
+여러분은 AI가 실수할 여지를 하나씩 닫고 있는 것입니다.</p>
+<p>규칙 파일이 몇 줄 더 자랐다는 건, 여러분이 앞으로 마주칠
+같은 유형의 실패를 미리 막아둔 것입니다.</p>
+<p>Hashimoto가 6개월에 걸쳐 만든 것을, 여러분은 이 두 시간에
+몇 줄 더 추가한 거예요. 계속 가봅시다.”</p>
+</blockquote>
+<p><strong>📊 이번 차시 체크리스트</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 학생 전원이 자신의 캐릭터에 움직임을 추가했다 (완성도 무관)</li>
+<li class="task-list-item"><input type="checkbox" disabled> 모호한 요청 vs 정밀 명세의 결과를 나란히 비교했다</li>
+<li class="task-list-item"><input type="checkbox" disabled> 각 학생의 규칙 파일에 애니메이션 관련 규칙이 최소 2개 이상 추가되었다</li>
+<li class="task-list-item"><input type="checkbox" disabled> 각 규칙에 “이 규칙이 생긴 사건”이 기록되어 있다</li>
+<li class="task-list-item"><input type="checkbox" disabled> 학생이 “움직임은 축·범위·속도·반복으로 쪼갤 수 있다”를 말로 설명할 수 있다</li>
+</ul>
+<p>다음 차시에서는 같은 캐릭터에 <strong>물리 법칙</strong>이 추가됩니다. 중력, 속도, 가속도. 검증 방법이 “눈으로 보기”에서 “수치로 계산”으로 올라갑니다. 규칙 파일이 또 자랄 거예요.</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/ai-rule-designer-30h-opus47/chapter03/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">3D 조형 — 내 머릿속 그림을 명세로 바꾸기 (차시 1-2)</span> </span> </a> <a href="/ai-rule-designer-30h-opus47/chapter05/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">물리 시뮬레이션 — 이제 수치로 검증한다 (차시 5-6)</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
